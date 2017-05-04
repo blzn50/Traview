@@ -13,18 +13,21 @@ class SubNavBar extends React.Component{
   constructor(props){
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
+    this.toLogin = this.toLogin.bind(this)
+    this.toRegister = this.toRegister.bind(this)
+    this.toFrontPage = this.toFrontPage.bind(this)
   }
   toLogin(event){
     event.preventDefault();
-    browserHistory.push('/login');
+    this.props.router.push('/login');
   }
   toRegister(event){
     event.preventDefault();
-    browserHistory.push('/register');
+    this.props.router.push('/register');
   }
   toFrontPage(event){
     event.preventDefault();
-    browserHistory.push('/result');
+    this.props.router.push('/');
   }
   handleLogout(event){
     event.preventDefault();

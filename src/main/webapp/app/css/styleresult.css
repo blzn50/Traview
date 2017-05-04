@@ -255,6 +255,12 @@ input[type="text"]{
 	}
 }
 
+@media only screen and (max-width: 767px){
+	.explore{
+		margin-top: 50%;
+	}
+}
+
 @media only screen and (min-width: 767px){
 	.input-group{
 		position:relative;

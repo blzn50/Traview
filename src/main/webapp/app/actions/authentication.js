@@ -84,7 +84,12 @@ export function loginUser(username,password){
       body: createForm(username,password)
     })
     .then(response => {
-      dispatch(loginSuccess());
+      if (response.status==='200'){
+        dispatch(loginSuccess());
+      }
+      else{
+        dispatch(loginFailure());
+      }
       console.log(response);
     })
     .catch(error => {

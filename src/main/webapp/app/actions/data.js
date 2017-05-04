@@ -9,17 +9,15 @@ export const RECOMMEND_REQUEST = 'RECOMMEND_REQUEST'
 export const RECOMMEND_SUCCESS ='RECOMMEND_SUCCESS'
 export const RECOMMEND_FAILED = 'RECOMMEND_FAILED'
 
-export function searchRequest(info){
+export function searchRequest(){
   return {
-    type: SEARCH_REQUEST,
-    payload: info
+    type: SEARCH_REQUEST
   }
 }
 
-export function searchFailed(error){
+export function searchFailed(){
   return {
-    type: SEARCH_FAILED,
-    error: error
+    type: SEARCH_FAILED
   }
 }
 
@@ -51,24 +49,20 @@ export function recommendSuccess(data){
   }
 }
 
-export function searchFetching(info){
-  dispatch(searchRequest(info))
-  return fetch(`${API_URL}/search`,{
-    method: post,
-    credentials: 'include',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(info)
-  })
-  .then(checkHttpStatus)
-  .then(parseJSON)
-  .then(response => {
-    dispatch(searchSuccess(response.data))
+export function searchFetching(query){
+  dispatch(searchRequest())
+  const uri = '/search?keyword=' + query;
+  return fetch(uri,{
+    method: 'GET',
+    credentials: 'same-origin'
+    })
+    .then(response => {
+      if(response.status==='200'){
+        dispatch(searchSuccess(response.data))
+      }
   })
   .catch(error =>{
-    dispatch(searchFailed(error))
+    dispatch(searchFailed())
   })
 }
 
