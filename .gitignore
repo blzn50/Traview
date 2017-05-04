@@ -1,5 +1,9 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
+node/
+src/main/webapp/node_modules/
+src/main/webapp/index.html
+src/main/webapp/index-bundle.js
 
 ### STS ###
 .apt_generated
@@ -16,7 +20,7 @@ target/
 *.ipr
 
 ### NetBeans ###
-nbproject/private/
+nbproject/
 build/
 nbbuild/
 dist/
