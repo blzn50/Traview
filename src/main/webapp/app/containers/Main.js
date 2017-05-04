@@ -1,23 +1,46 @@
 var React = require('react');
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
+import {loginSuccess} from '../actions/authentication'
 
-function Ha(props){
-  navigator.geolocation.getCurrentPosition((position)=>{
-    console.log(position);
-  });
-  console.log(props);
-  return (
-    <div>
-      {props.children}
-    </div>
-  )
+class SubMain extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  getCurrentLocation(){
+    navigator.geolocation.getCurrentPosition((position)=>{
+      //  console.log(position);
+    })
+  }
+  componentDidMount(){
+    if (localStorage.getItem('username')!==null){
+        console.log('have cookie')
+        this.props.autoLogin()
+    }
+  }
+  render(){
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    state: state
+  }
 }
 
-const Main = withRouter(connect(mapStateToProps)(Ha))
+const mapDispatchToProps = dispatch => {
+  return {
+    autoLogin: () => {
+      dispatch(loginSuccess())
+    }
+  }
+}
+
+const Main = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubMain))
 
 module.exports = Main

@@ -71,25 +71,34 @@ h1{
 }
 
 .navbar-nav li{
-	margin-top: 9%;
+	margin-top: 7%;
 }
 
 .navbar-default .navbar-nav>li>a{
 	color: rgb(219,2,2);
+	text-align: center;
 }
 
-.navbar-nav>li:hover{
+.navbar-nav>li:not(#account):hover{
 	background-color:rgb(230,90,83);
 	color: #fff;
 	border-radius: 7px;
+	cursor: pointer
 }
 
+#account{
+	margin-top: 7%;
+	color: rgb(102, 220, 51);
+	padding: 5px;
+	font-size: 25px;
+	text-align: center;
+	margin-left: 50px;
+}
 
-.navbar-nav>li .active:hover{
+.navbar-nav>li:not(#account) .active:hover{
 	background-color: rgb(230,90,83);
 	color: #fff;
 }
-
 
 /*Search bar*/
 .input-group{
@@ -236,7 +245,13 @@ input[type="text"]{
 		font-weight: 900;
 	}
 	div.explore{
-		padding-top: 40px
+		padding-top: 40px;
+	}
+}
+
+@media only screen and (max-width: 400px){
+	#account{
+		font-size: 17px;
 	}
 }
 
@@ -251,7 +266,22 @@ input[type="text"]{
 	.navbar-header{
 		width: 60%;
 	}
+}
 
+@media only screen and (max-width: 904px){
+	.container-fluid{
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		align-items: center;
+	}
+	.navbar-nav li{
+		margin-bottom: 3%;
+		margin-top: 5%;
+	}
+	#account{
+		margin-top: 5%;
+	}
 }
 
 @media only screen and (min-width: 904px){
@@ -266,7 +296,6 @@ input[type="text"]{
 	.navbar-nav{
 		float:left !important;
 	}
-
 }
 
 
