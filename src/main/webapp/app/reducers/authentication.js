@@ -23,49 +23,33 @@ from '../actions/authentication';
 // }
 
 export function loginUser(state={
-  token: '',
   isFetching: false,
   fetched: false,
-  username: '',
   statusText: ''
 }, action){
-  const user = {
-    isFetching:false,
-    fetched: false,
-    token: '',
-    username: '',
-    statusText: ''
-  }
   switch (action.type){
     case LOGIN_REQUEST:
       return Object.assign({},state,{
-        user: Object.assign({},user,{
-          isFetching:true,
-          statusText: 'Logging in'
-        })
+        isFetching: true,
+        statusText: 'Loggin In'
       })
     case LOGIN_FAILURE:
       return Object.assign({},state,{
-        error: action.payload.statusText,
-        user: Object.assign({},user,{
-          statusText: 'Login failed'
-        })
+        isFetching: false,
+        fetched: false,
+        statusText: 'Login failed'
       })
     case LOGIN_SUCCESS:
       return Object.assign({},state,{
-        user: Object.assign({},user,{
-          isFetching: false,
-          fetched: true,
-          statusText: "Logged in",
-          username: action.payload.username,
-          token: action.payload.token
-        })
+        isFetching: false,
+        fetched: true,
+        statusText: 'Logged In'
       })
     case LOGOUT:
       return Object.assign({},state,{
-        user: Object.assign({},user,{
-          statusText: 'Successfully logged out'
-        })
+        isFetching: false,
+        fetched: false,
+        statusText: 'Logged Out'
       })
     default:
       return state
@@ -76,8 +60,6 @@ export function registerUser(state={}, action){
   const user = {
     isFetching:false,
     fetched: false,
-    token: '',
-    username: '',
     statusText: ''
   }
   switch (action.type){

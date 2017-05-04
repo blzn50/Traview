@@ -1,6 +1,5 @@
 var React = require('react')
 var ReactRouter = require('react-router')
-var Link = ReactRouter.Link
 
 function NavBar(props){
   return (

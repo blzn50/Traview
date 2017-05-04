@@ -10,17 +10,17 @@ function LoginForm(props){
             <div id="sub2-1" className="box-header">
                 <h2 id="titlelogin2" >Log In</h2>
             </div>
-            <form action="" method="">
+            <form>
                 <label htmlFor="username">Username</label>
                 <br/>
-                <input type="text" id="username" name="username" />
+                <input onChange={props.onChangeUsername} type="text" id="username" name="username" />
                 <br/>
                 <label htmlFor="password">Password</label>
                 <br/>
-                <input type="password" id="password" name="password" />
+                <input onChange={props.onChangePassword} type="password" id="password" name="password" />
                 <br/>
-                <button type="loginIn" >Sign In</button>
-                <button type="register" onClick={props.toRegister} >Register</button>
+                <button onClick={props.handleLogin} >Sign In</button>
+                <button onClick={props.toRegister} >Register</button>
             </form>
 
         </div>

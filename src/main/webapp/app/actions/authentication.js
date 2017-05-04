@@ -8,7 +8,7 @@ export const REGISTER = 'REGISTER'
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const REGISTER_FAILURE = 'REGISTER_FAILURE'
 
-const API_URL = 'http://localhost:3000/api'
+const API_URL = 'http://localhost:8080/'
 
 export function loginRequest(){
   return {
@@ -16,10 +16,9 @@ export function loginRequest(){
   }
 }
 
-export function loginSuccess(data){
+export function loginSuccess(){
   return {
-    type: LOGIN_SUCCESS,
-    payload: data
+    type: LOGIN_SUCCESS
   }
 }
 
@@ -56,8 +55,8 @@ export function logout(){
 }
 
 export function registerUser(username, password){
-  dispatch(register());
   return (dispatch) => {
+    dispatch(register());
     fetch(`${API_URL}/register`,{
       method: post,
       credentials: 'include',
@@ -77,30 +76,44 @@ export function registerUser(username, password){
 }
 
 export function loginUser(username,password){
-  dispatch(loginRequest());
   return (dispatch) => {
-    fetch(`${API_URL}/login`,{
-      method: post,
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({username: username, password: password})
+    dispatch(loginRequest());
+    fetch(`/login`,{
+      method: 'POST',
+      credentials: 'same-origin',
+      body: createForm(username,password)
     })
-    .then(checkHttpStatus)
-    .then(parseJSON)
     .then(response => {
-      cookie.save('token', response.data.token);
-      dispatch(loginSuccess(response.data));
+      dispatch(loginSuccess());
+      console.log(response);
     })
     .catch(error => {
+      console.log(error);
       dispatch(loginFailure(error))
     })
   }
 }
 
 export function logoutUser(){
-  dispatch(logout());
-  cookie.remove('token')
+  return (dispatch) => {
+    fetch('/logout',{
+      method: 'POST',
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      dispatch(logout())
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+}
+
+function createForm(username,password){
+  var form = new FormData();
+  form.append('username',username);
+  form.append('password',password);
+  form.append('submit', 'login');
+  console.log('key: '+ form.keys() + '; values: ' + form.values());
+  return form;
 }
