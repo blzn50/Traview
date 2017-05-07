@@ -11,6 +11,7 @@ var FrontPageContainer = require('../containers/FrontPageContainer');
 var LoginContainer = require('../containers/LoginContainer');
 var RegisterContainer = require('../containers/RegisterContainer')
 var ResultContainer = require('../containers/ResultContainer');
+var DetailContainer = require('../containers/DetailContainer')
 import {hashHistory} from 'react-router'
 
 const store = configureStore();
@@ -23,6 +24,7 @@ var Routes = (
         <Route path='login' component={LoginContainer} />
         <Route path='register' component={RegisterContainer} />
         <Route path='result/:query' component={ResultContainer} />
+        <Route path='detail' component={DetailContainer} />
       </Route>
     </Router>
   </Provider>

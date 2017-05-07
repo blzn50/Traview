@@ -4,16 +4,22 @@ class Map extends React.Component{
   constructor(props){
     super(props)
   }
-  componentDidMount(){
-    const uluru = {lat: this.props.lat, lng: this.props.lng};
+  generateMap(lat,lng){
+    const uluru = new google.maps.LatLng(lat,lng);
     const map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 4,
+      zoom: 10,
       center: uluru
     });
     const marker = new google.maps.Marker({
       position: uluru,
       map: map
     });
+  }
+  componentDidMount(){
+    this.generateMap(this.props.lat,this.props.lng)
+  }
+  componentWillReceiveProps(nextProps){
+    this.generateMap(nextProps.lat,nextProps.lng)
   }
   render(){
     return (

@@ -50,20 +50,25 @@ export function recommendSuccess(data){
 }
 
 export function searchFetching(query){
-  dispatch(searchRequest())
-  const uri = '/search?keyword=' + query;
-  return fetch(uri,{
-    method: 'GET',
-    credentials: 'same-origin'
+  return (dispatch) => {
+    dispatch(searchRequest())
+    const uri = '/search?keyword=' + query;
+    fetch(uri,{
+      method: 'GET',
+      credentials: 'same-origin'
     })
     .then(response => {
-      if(response.status==='200'){
-        dispatch(searchSuccess(response.data))
+      if(response.status===200){
+        return response.json()
       }
-  })
-  .catch(error =>{
-    dispatch(searchFailed())
-  })
+      else{
+        dispatch(searchFailed())
+      }
+    })
+    .then(json => {
+      dispatch(searchSuccess(json))
+    })
+  }
 }
 
 export function recommendFetching(info){

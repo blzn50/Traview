@@ -1,5 +1,7 @@
 var React = require('react')
 import {withRouter} from 'react-router'
+import {connect} from 'react-redux'
+import {searchFetching} from '../actions/data'
 
 class SubSearchBar extends React.Component{
   constructor(props){
@@ -14,14 +16,13 @@ class SubSearchBar extends React.Component{
     event.preventDefault()
     this.setState({
       query: event.target.value.replace(/ /g,"+")
-    },()=>{console.log(this.state.query)})
+    })
   }
   handleSearch(event){
     event.preventDefault()
     this.props.router.push('/result/' + this.state.query)
   }
   render(){
-    console.log(this.props)
     return (
         <div id="main" className="main_search_bar">
             <div className="search">
@@ -41,6 +42,20 @@ class SubSearchBar extends React.Component{
   }
 }
 
-const SearchBar = withRouter(SubSearchBar)
+const mapStateToProps = state => {
+  return {
+    state: state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    searchFetching: (query) => {
+      dispatch(searchFetching(query))
+    }
+  }
+}
+
+const SearchBar = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubSearchBar))
 
 module.exports = SearchBar

@@ -12,18 +12,24 @@ export function searchedLocation(state={
   switch (action.type){
     case SEARCH_FAILED:
       return Object.assign({},state,{
-          statusText: 'Cannot find'
+          isFetching: false,
+          fetched: false,
+          statusText: 'Cannot find',
+          places: []
       })
     case SEARCH_REQUEST:
       return Object.assign({},state,{
-        isFetching: true
+        isFetching: true,
+        fetched: false,
+        statusText: '',
+        places: []
       })
     case SEARCH_SUCCESS:
       return Object.assign({},state,{
         isFetching: false,
         fetched: true,
         statusText: 'Found',
-        places: action.payload.places
+        places: action.payload
       })
     default:
       return state

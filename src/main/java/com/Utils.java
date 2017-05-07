@@ -8,10 +8,14 @@ import org.springframework.web.client.RestTemplate;
  * Created by khanguyen on 4/26/17.
  */
 public class Utils {
-    public static String apiKey = "AIzaSyCX0mtwFW73r75ImMXR3SZLgwwAQnhArm4";
-    public static String apiPlaceTextSearchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyCX0mtwFW73r75ImMXR3SZLgwwAQnhArm4&";
-    public static String apiPlaceDetailSearchUrl = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyCX0mtwFW73r75ImMXR3SZLgwwAQnhArm4&";
-    public static String apiPhotoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyCX0mtwFW73r75ImMXR3SZLgwwAQnhArm4&photoreference=";
+    public static String apiKey = "AIzaSyA2MvQ6d0O22H55BVXzGYurTDOtgNvZBmA";
+    //public static String apiKey = "AIzaSyCX0mtwFW73r75ImMXR3SZLgwwAQnhArm4";
+    //public static String apiPlaceTextSearchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyCX0mtwFW73r75ImMXR3SZLgwwAQnhArm4&";
+    //public static String apiPlaceDetailSearchUrl = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyCX0mtwFW73r75ImMXR3SZLgwwAQnhArm4&";
+    //public static String apiPhotoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyCX0mtwFW73r75ImMXR3SZLgwwAQnhArm4&photoreference=";
+    public static String apiPlaceTextSearchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyA2MvQ6d0O22H55BVXzGYurTDOtgNvZBmA&";
+    public static String apiPlaceDetailSearchUrl = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyA2MvQ6d0O22H55BVXzGYurTDOtgNvZBmA&";
+    public static String apiPhotoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyA2MvQ6d0O22H55BVXzGYurTDOtgNvZBmA&photoreference=";
     public static String query = "query=";
     public static String key = "key=";
     public static String and = "&";
