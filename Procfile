@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -cp target/classes:target/dependency/* Travel -Dhttp.port=$PORT -Dhibernate.connection.url=$DATABASE_URL
+web: java $JAVA_OPTS -jar target/travel-0.1.jar -Dhttp.port=$PORT -Dhibernate.connection.url=$DATABASE_URL
