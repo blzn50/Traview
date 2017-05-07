@@ -41,10 +41,9 @@ export function registerFailure(error){
   }
 }
 
-export function loginFailure(error){
+export function loginFailure(){
   return {
-    type: LOGIN_FAILURE,
-    payload: error.response
+    type: LOGIN_FAILURE
   }
 }
 
@@ -84,7 +83,15 @@ export function loginUser(username,password){
       body: createForm(username,password)
     })
     .then(response => {
-      dispatch(loginSuccess());
+      console.log(response.status)
+      if (response.status===200){
+        console.log('success')
+        dispatch(loginSuccess());
+      }
+      else{
+        console.log('failed')
+        dispatch(loginFailure());
+      }
       console.log(response);
     })
     .catch(error => {

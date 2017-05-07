@@ -145,6 +145,55 @@ input[type="text"]{
 	width: 100%;
 
 }
+/*Form review*/
+#SiteWrapper { padding: 1.5em 2em; margin: 1em; background: #fff; border: 2px solid #ccc;}
+#SearchContainer { padding: 1em 0;}
+#SearchInput {}
+
+/*Form Design*/
+.group{
+    position:relative;
+    margin-bottom:55px;
+}
+.group>input {
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:100%;
+    border:none;
+    border-bottom:1px solid #ccc;
+}
+.group>input:focus {
+    outline:none;
+}
+
+@-webkit-keyframes inputHighlighter {
+	 from {
+			 background:#5264AE;
+	 }
+	 to {
+			 width:0;
+			 background:transparent;
+	 }
+}
+@-moz-keyframes inputHighlighter {
+	 from {
+			 background:#5264AE;
+	 }
+	 to {
+			 width:0;
+			 background:transparent;
+	 }
+}
+@keyframes inputHighlighter {
+	 from {
+			 background:#5264AE;
+	 }
+	 to {
+			 width:0;
+			 background:transparent;
+	 }
+}
+
 
 /*Container explore i.e. Top Rated places starts here*/
 
@@ -252,6 +301,12 @@ input[type="text"]{
 @media only screen and (max-width: 400px){
 	#account{
 		font-size: 17px;
+	}
+}
+
+@media only screen and (max-width: 767px){
+	.explore{
+		margin-top: 50%;
 	}
 }
 

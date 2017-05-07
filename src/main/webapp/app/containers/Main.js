@@ -18,6 +18,11 @@ class SubMain extends React.Component{
         this.props.autoLogin()
     }
   }
+  componentWillReceiveProps(nextProps){
+    if (nextProps.state.loginUser.fetched===false){
+      localStorage.clear()
+    }
+  }
   render(){
     return (
       <div>
