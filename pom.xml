@@ -47,11 +47,49 @@
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
 	    </dependency>
+	    <dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <scope>runtime</scope>
+	    </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+	    <dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-core</artifactId>
+		    <version>LATEST</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-core</artifactId>
+		    <type>test-jar</type>
+		    <scope>test</scope>
+		    <version>LATEST</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-math</artifactId>
+		    <version>LATEST</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-math</artifactId>
+		    <type>test-jar</type>
+		    <scope>test</scope>
+		    <version>LATEST</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-utils</artifactId>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.apache.mahout</groupId>
+		    <artifactId>mahout-examples</artifactId>
+		    <version>LATEST</version>
+	    </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
