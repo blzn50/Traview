@@ -1,9 +1,8 @@
 package com.review.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.Calendar;
 
 /**
  * Created by khanguyen on 4/28/17.
@@ -11,9 +10,10 @@ import java.sql.Date;
 @Entity
 @Table(name = "review")
 public class Review {
-    private int review_id;
-    private String userid;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int review_id;
+    private String user_id;
     private String place_id;
     private String user_comment;
     private int rating;
@@ -26,12 +26,12 @@ public class Review {
         this.review_id = review_id;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getPlace_id() {
@@ -62,11 +62,24 @@ public class Review {
 
     }
 
+    public Review(String user_id, String place_id, String user_comment, int rating) {
+        this.user_id = user_id;
+        this.place_id = place_id;
+        this.user_comment = user_comment;
+        this.rating = rating;
+        this.time = new Date(Calendar.getInstance().getTime().getTime());;
+    }
+
     public Date getTime() {
         return time;
     }
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return user_id + " " + place_id + "\n" + user_comment + "\n" + rating + " " + time.toString();
     }
 }

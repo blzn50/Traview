@@ -1,17 +1,20 @@
 package com.places;
 
 import com.Utils;
+import com.account.model.Account;
+import com.account.model.AccountRepo;
 import com.places.model.Place;
+import com.review.model.Review;
+import com.review.model.ReviewRepo;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.http.HttpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +28,11 @@ public class PlacesController {
         List<Place> searchResults = new ArrayList<>();
         String textSearchUrl = Utils.apiPlaceTextSearchUrl + Utils.query + keyword;
         String jsonResponse = Utils.getJsonFromGetRequest(textSearchUrl);
-        //System.out.println(jsonResponse);
         JSONObject jsonObject = new JSONObject(jsonResponse.trim());
         JSONArray result = jsonObject.getJSONArray("results");
-        System.out.println(result);
         for (int i = 0; i < result.length(); i++) {
             String placeId = result.getJSONObject(i).getString("place_id");
             String detailSearchUrl = Utils.apiPlaceDetailSearchUrl + Utils.place_id + placeId;
-            System.out.println(detailSearchUrl);
             jsonResponse = Utils.getJsonFromGetRequest(detailSearchUrl);
             JSONObject curResult = new JSONObject(jsonResponse.trim()).getJSONObject("result");
             Place placeDetail = new Place();
@@ -49,9 +49,7 @@ public class PlacesController {
                 placeDetail.setPhotos(photoRefs);
             }
             searchResults.add(placeDetail);
-            System.out.println(placeId);
         }
-        //System.out.println(result.toString());
         return new ResponseEntity<>(searchResults, HttpStatus.OK);
     }
 }
