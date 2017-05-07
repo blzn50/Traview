@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/travel-0.1.jar --port $PORT
+web:    java $JAVA_OPTS -cp target/classes:target/dependency/* Travel --port $PORT
