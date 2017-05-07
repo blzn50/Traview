@@ -25,7 +25,7 @@ class LoginContainerClass extends React.Component{
   }
   toRegister(){
     event.preventDefault();
-    browserHistory.push('/register');
+    this.props.router.push('/register');
   }
   onChangeUsername(event){
     event.preventDefault();
@@ -46,7 +46,7 @@ class LoginContainerClass extends React.Component{
         username: '',
         password: '',
       })
-      browserHistory.push('/')
+      this.props.router.push('/')
     }
   }
   render(){
