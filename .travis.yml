@@ -1,0 +1,21 @@
+language: java
+jdk:
+- oraclejdk8
+sudo: false
+deploy:
+    provider: heroku
+    api_key:
+        secure: "W8OrPlRr6uEifczb4QlBmtbuUBcLCgmI0g9MqrNk01fU1Offtp0TNZgp73ExqQosXkDQ/
+FXfB4vF/ljCaXZmCW9uFg0K7UflR+AtwXWdNU0icGGHqJNlBTGNu2Gk9yN9tWAuHNUQ6zCIHbhOkBkB2
+CGfWfM8JVxjuTX6a0URjXxZ5zR9kKl2KoCdl1rKjwEvTfoM+6z8NecDYBBSfylbEfPBqJRcWv965wO/5
+1xznNC9ucPNFW0VIhEsU3OONI+XM2UD0hLD1k/2M098sKkAMFMcoOvI+x1i8a+y0gKDDAWq4Rkpr3GPZ
+kIcVtRmJriih2FON4FneAOTIbphfKakZ1HkA6IHMZ6hwZjt190mOyLjB2oEby7pMH6f6MBtdANFsRlee
+Jzr6Fea/RISvphKwjoDOQ2Bx/Itn/QYUbancg1u/hNij3p9TOVTq2XZ0fTtHjtetDMXDWPEuWVskCEu1
+nDWJnBZpklgK6JJSg7vFWU+55R+fW1TyK6hTlLH1hvPZADDaH1fB/2XQ+yYgwAkZrZblMylRB5BR3iTl
+mb/jsF1N9KWJ8P4Bi+YtnpjY/Df3/Zwex5hPpvGAHhCGOVRxsqxlMRG0NfbEaNBW0aXpz0x4HARwOHUj
+/ysb0J61gUtZrbsdMXO4PHFE6i3aKDWhHEsAzbZE8aVM8XqZIHy1Ak="
+    app:
+        master: traviewdev
+        production: traviewdemo
+    on:
+        repo: blzn50/Traview
