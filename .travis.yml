@@ -7,7 +7,7 @@ deploy:
     api_key:
         secure: NX5H3X0a3zx6Mx3iq/edJydnj/j2E9/Loiy5Y5BtR3SOV7SZl3rIvogGRCGIDQxosSpuU768efw5aDjvpHTUfmSGEvsoamktNOaWIneUC6krrHHtwHySvHE9XcEkB4RVocCetIjWKddxw0jEeP39NXnQFOpI+9vkY4OxyKt4Ou5DoacUSPPvRMksX74/CMH2sd7fLdrxjoC8KYljL0GU1bP+oPE/oUMW9+wJiBop2iNYlb0eUEmk8Kw/suHWlGn7gdamIctuiDXztzPfqx0o3pvqUzBd4LGBlgB7+Wk/hex3GJpUvtyoi8dGFzbB5Yblk7X0dYB5mcv3/uhs0MwGDp3Dun2W5u6Q7PElY8cTuTq9C0dWIKB4cndJ3eqjLaz9sgGUDpsZ4kFONcG0SakPFUr6TnqxZxxb6eJbjTvMEVvCBd1eTADMmQO2kvHNk6yLn6C/ux4Ln4TNsqU8QscK5vdnHvnRPFdTYCYp7gdbAjDfhKtIG+ZkikOQ3O3hsD/PQwDK2lu5e8XoCx4TQhqMFuvF8Ge9Cjx2m+jfqzY34VCzBK8eUlXeMXs53GmUqjpd5GUfsfRmsp4xDnXEu2qixOwGISkJ90WHx5LWSM3E7P8jJt0ZZhmWhq9iKLTSb8YgrR4uw0KC+da8R6J0vBcmSiyb18rC6gNQcm9B+kP2yI4=
     app:
-        master: java-tomcat-ci-dev
-        production: java-tomcat-ci-prod
+        master: traviewdev
+        production: traviewdemo
     on:
-        repo: megakoresh/java-tomcat-ci
+        repo: blzn50/Traview
