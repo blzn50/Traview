@@ -3,19 +3,11 @@ jdk:
 - oraclejdk8
 sudo: false
 deploy:
-    provider: heroku
-    api_key:
-        secure: "W8OrPlRr6uEifczb4QlBmtbuUBcLCgmI0g9MqrNk01fU1Offtp0TNZgp73ExqQosXkDQ/
-FXfB4vF/ljCaXZmCW9uFg0K7UflR+AtwXWdNU0icGGHqJNlBTGNu2Gk9yN9tWAuHNUQ6zCIHbhOkBkB2
-CGfWfM8JVxjuTX6a0URjXxZ5zR9kKl2KoCdl1rKjwEvTfoM+6z8NecDYBBSfylbEfPBqJRcWv965wO/5
-1xznNC9ucPNFW0VIhEsU3OONI+XM2UD0hLD1k/2M098sKkAMFMcoOvI+x1i8a+y0gKDDAWq4Rkpr3GPZ
-kIcVtRmJriih2FON4FneAOTIbphfKakZ1HkA6IHMZ6hwZjt190mOyLjB2oEby7pMH6f6MBtdANFsRlee
-Jzr6Fea/RISvphKwjoDOQ2Bx/Itn/QYUbancg1u/hNij3p9TOVTq2XZ0fTtHjtetDMXDWPEuWVskCEu1
-nDWJnBZpklgK6JJSg7vFWU+55R+fW1TyK6hTlLH1hvPZADDaH1fB/2XQ+yYgwAkZrZblMylRB5BR3iTl
-mb/jsF1N9KWJ8P4Bi+YtnpjY/Df3/Zwex5hPpvGAHhCGOVRxsqxlMRG0NfbEaNBW0aXpz0x4HARwOHUj
-/ysb0J61gUtZrbsdMXO4PHFE6i3aKDWhHEsAzbZE8aVM8XqZIHy1Ak="
-    app:
-        master: traviewdev
-        production: traviewdemo
-    on:
-        repo: blzn50/Traview
+  provider: heroku
+  api_key:
+    secure: IsBvEPe+UNQLOAOtaljPDFj4UNXU4HsWAGuMYKu5EmPaKHImWtB0Ve8HsbvYkwWomHkMTDBvlgZWnXHnyDRjh4IQe41hyrAJcrj1nGxqUdhIOshfQ4uitJyQyDIvtvW7uVkBdMLC6mTZ2ei4fbY9wHRxct3eodzOHQtrzOCVscyZ0uNbR6lj4EXSlRasK/xWrkc1hrSdKiwTYw2QZZW+ZlSrmwg0bIB41QSbEz1tevV4vEnpIRjIBZ9/c2mkdHAySqxlhOa47lJwJSXg2lSdxYx5TXONmAWjXow18HaQAxi6CzhrUxmFFfmuirt7VKqChVX8XmTafb4QZDcwogMyym+xa+PJZLwxLCD0WnTm7mCbH1DcKjSSx6wjNOQfLX+dLt0dC3RYFMZtu6iyJOogoCRtbgdTiwYNJ7RJ7S96QO4/3MRqkNHOSX1r8OMQ/WDYb7JOZn4s3hujic/jik6W50iXQkaLG4A66krC1Kh4mvVloFJvB5N4rLr9dM+ylh/ZNtPEi8Kn0/W63NDY1x3uRMa4xMgOyrwoNCReBT9i5Dyl8RvvJGv9eBw8hP+EGgzex1AuBzesGvIg0d0fYUptRr52xc0LW396Xx1Ipa5I1euv8ukEpzt2bO+vsawC66kE/hJ1Rygn026jyXmmGJ697Z27mfmItcKkvFz2jwN3R4g=
+  app:
+    master: traviewdev
+    production: traviewdemo
+  on:
+    repo: blzn50/Traview
