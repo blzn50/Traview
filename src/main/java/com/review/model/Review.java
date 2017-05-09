@@ -67,7 +67,7 @@ public class Review {
         this.place_id = place_id;
         this.user_comment = user_comment;
         this.rating = rating;
-        this.time = new Date(Calendar.getInstance().getTime().getTime());;
+        this.time = new Date(Calendar.getInstance().getTime().getTime());
     }
 
     public Date getTime() {
