@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
+import java.util.Calendar;
+
 /**
  * Created by khanguyen on 4/29/17.
  */
@@ -20,6 +23,7 @@ public class ReviewController {
     @RequestMapping("/create")
     public ResponseEntity<?> addReview(@RequestBody Review review){
         try {
+            review.setTime(new Date(Calendar.getInstance().getTime().getTime()));
             reviewRepo.save(review);
             return new ResponseEntity<>(review, HttpStatus.OK);
         } catch (Exception e) {
