@@ -58,12 +58,8 @@ class SubNavBar extends React.Component{
               <div className="collapse navbar-collapse" id="myNavbar">
                     {this.props.state.loginUser.fetched===true
                       ? (<ul className="nav navbar-nav">
-                          <li id='account'
-                              style={{
-                                marginRight: '50px',
-                                wordSpacing: '5px'
-                              }} >
-                            Welcome, {localStorage.getItem('username')}
+                          <li style={{}}>
+                          <a>Welcome, {localStorage.getItem('username')}</a>
                           </li>
                           <Logout handleLogout={this.handleLogout} />
                         </ul>)

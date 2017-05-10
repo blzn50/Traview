@@ -67,13 +67,12 @@ $(document).ready(function() {
         var row_width = $('.service-row').find('.col-sm-8').height();
 	var width = $(window).width();
 	var doc_width = $(document).width();
-	console.log("row sjosa" + row_width);
-	console.log("width" + width);
-	console.log("dociwhdh" + doc_width);
 	if (width < 650) {
+                $(".main_search_bar").find("#title").css('font-size' , '2em');
 		$('#screenbg').find('.search_big').text("");
-		$('.search_index').css('padding-top', '15px')
+		$('.search_index').css('padding-top', '70px')
 	} else {
+                $(".main_search_bar").find("#title").css('font-size' , '5em');
 		$('#screenbg').find('.search_big').text("Search");
 		$('.search_index').css('padding-top', '30px');
 	}
@@ -86,6 +85,21 @@ $(document).ready(function() {
 	$("#add-review ,#cancel-review").click(function(){
 		$('#review-form').toggle();
 	});
+        
+        var url = window.location.href;
+        
+		if(url.indexOf("/#/detail") > -1) {
+		  $(".main_search_bar").find(".top animated fadeInDown").hide();
+                  $(".main_search_bar").removeClass(".search_index top animated fadeInUp");
+		}else if(url.indexOf("/#/result") > -1){
+                  $(".main_search_bar").find(".top animated fadeInDown").hide();
+                  $(".main_search_bar").removeClass(".search_index top animated fadeInUp");
+		}else{
+                  $(".main_search_bar").find(".top animated fadeInDown").show();
+                  $(".main_search_bar").addClass(".search_index top animated fadeInUp");  
+                }
+	
+
 
 
 

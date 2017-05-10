@@ -5,8 +5,8 @@ function Error(props){
     <div style={{
       fontSize: '30px',
       textAlign: 'center',
-      position: 'absolute',
-      marginTop: '40px',
+      position: 'relative',
+      margin: '0px auto',
     }}>
       <p> {props.message} </p>
     </div>

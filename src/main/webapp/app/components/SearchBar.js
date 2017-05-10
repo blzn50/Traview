@@ -2,6 +2,7 @@ var React = require('react')
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
 import {searchFetching} from '../actions/data'
+import SearchBox from './search-box';
 
 class SubSearchBar extends React.Component{
   constructor(props){
@@ -24,19 +25,12 @@ class SubSearchBar extends React.Component{
   }
   render(){
     return (
-        <div id="main" className="main_search_bar">
-                <p id="title">Search Your Destination</p> 
-            <div className="search_index" style={{paddingTop:'25px'}}>
-                <div className="input-group">
-                    <input type="text" className="form-control" placeholder="Enter the Place" name="srch-term"
-                      onChange={this.onChange} id="srch-term" />
-                        <div className="input-group-btn">
-                            <button className="btn btn-default" type="submit"
-                              onClick={this.handleSearch} name="search">
-                              <i className="glyphicon glyphicon-search" id="screenbg"><span className="search_big">Search</span></i>
-                            </button>
-                        </div>
-                </div>
+        <div id="main" className="main_search_bar">    
+            <div className="top animated fadeInDown">
+                <p id="title">Search Your Destination</p>
+            </div>
+            <div className="search_index top animated fadeInUp">
+             <SearchBox onChange={this.onChange} handleSearch={this.handleSearch} />
             </div>
         </div>
       )
