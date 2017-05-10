@@ -24,7 +24,40 @@ function SubDetail(props){
         <div className="container-fluid detail">
           <div className="row detail-row">
             <div className="col-sm-6 image-col-sm-6">
-              <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
+                <div id="myCarousel" className="carousel slide" data-ride="carousel">
+                    <ol className="carousel-indicators">
+                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                          <li data-target="#myCarousel" data-slide-to="1"></li>
+                          <li data-target="#myCarousel" data-slide-to="2"></li>
+                          <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol>
+                    <div className="carousel-inner" role="listbox">
+                          <div className="item active">
+                          <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />      
+                          </div>
+
+                            <div className="item">
+                             <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />         
+                            </div>
+                             <div className="item">
+                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />      
+                            </div>
+                            <div className="item">
+                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />      
+                            </div>
+                        </div>
+
+
+                        <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span className="sr-only">Previous</span>
+                        </a>
+                        <a className="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span className="sr-only">Next</span>
+                        </a>
+                    </div>
+              
             </div>
 
             <div className="col-sm-6 detail-col-sm-6">
