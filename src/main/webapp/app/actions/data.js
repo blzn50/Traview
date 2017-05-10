@@ -55,16 +55,30 @@ export function searchFetching(query){
       method: 'GET',
       credentials: 'same-origin'
     })
-    .then(response => {
-      if(response.status===200){
-        return response.json()
+    // .then(response => {
+    //   if(response.status===200){
+    //     return response.json()
+    //   }
+    //   else{
+    //     dispatch(searchFailed())
+    //   }
+    // })
+    // .then(json => {
+    //   dispatch(searchSuccess(json))
+    // })
+    .then(response=>{
+      return {
+        json: response.json(),
+        status: response.status
+      }
+    })
+    .then(responseParsed=>{
+      if (responseParsed.status===200){
+        dispatch(searchSuccess(responseParsed.json))
       }
       else{
         dispatch(searchFailed())
       }
-    })
-    .then(json => {
-      dispatch(searchSuccess(json))
     })
   }
 }
@@ -76,16 +90,30 @@ export function recommendFetching(){
       method: 'GET',
       credentials: 'include'
     })
-    .then(response => {
-      if(response.status===200){
-        return response.json()
+    // .then(response => {
+    //   if(response.status===200){
+    //     return response.json()
+    //   }
+    //   else{
+    //     dispatch(recommendFailed())
+    //   }
+    // })
+    // .then(json => {
+    //   dispatch(recommendSuccess(json))
+    // })
+    .then(response=>{
+      return {
+        json: response.json(),
+        status: response.status
+      }
+    })
+    .then(responseParsed=>{
+      if (responseParsed.status===200){
+        dispatch(recommendSuccess(responseParsed.json))
       }
       else{
         dispatch(recommendFailed())
       }
-    })
-    .then(json => {
-      dispatch(recommendSuccess(json))
     })
   }
 }

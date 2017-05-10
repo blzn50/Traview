@@ -26,8 +26,9 @@ class SubResultContainer extends React.Component{
   componentWillReceiveProps(nextProps){
     console.log(nextProps)
     if (nextProps.state.searchedLocation.fetched === true
-          &&nextProps.state.searchedLocation.isFetching === false
-          && nextProps.location.pathname===this.props.location.pathname){
+          && nextProps.state.searchedLocation.isFetching === false
+          && nextProps.location.pathname===this.props.location.pathname
+          && nextProps.state.searchedLocation.places.length!==0){
       this.locationOnMap(nextProps.state.searchedLocation.places[0].address)
     }
     else if (nextProps.location.pathname!==this.props.location.pathname){

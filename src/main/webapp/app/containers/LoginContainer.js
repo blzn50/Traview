@@ -40,7 +40,11 @@ class LoginContainerClass extends React.Component{
     })
   }
   componentWillReceiveProps(nextProps){
-    if (nextProps.state.loginUser.fetched===true){
+    if (nextProps.state.loginUser.fetched==false
+        && this.props.state.loginUser.isFetching==true){
+        alert('Wrong username/password. Please try again.')
+    }
+    else if (nextProps.state.loginUser.fetched===true){
       localStorage.setItem('username',this.state.username);
       this.setState({
         username: '',

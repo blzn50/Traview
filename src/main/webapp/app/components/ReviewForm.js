@@ -36,10 +36,8 @@ class SubReviewForm extends React.Component{
   submitReview(event){
     event.preventDefault()
     if (this.props.state.loginUser.fetched==true){
-      const d = new Date()
       this.props.submitReview({
         rating: this.state.rating,
-        time: d.toISOString(),
         user_comment: this.state.review,
         userid: localStorage.getItem('username'),
         place_id: this.props.item.placeId
