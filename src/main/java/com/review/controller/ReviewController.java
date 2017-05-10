@@ -1,5 +1,6 @@
 package com.review.controller;
 
+import com.account.model.AccountRepo;
 import com.review.model.Review;
 import com.review.model.ReviewRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,14 @@ import java.util.Calendar;
 public class ReviewController {
     @Autowired
     ReviewRepo reviewRepo;
+    @Autowired
+    AccountRepo accountRepo;
     @RequestMapping("/create")
     public ResponseEntity<?> addReview(@RequestBody Review review){
         try {
             review.setTime(new Date(Calendar.getInstance().getTime().getTime()));
+            review.setMahout_place_id(Math.abs(review.getPlace_id().hashCode()));
+            review.setUser_id(accountRepo.findByUsername(review.getUsername()).getUserid());
             reviewRepo.save(review);
             return new ResponseEntity<>(review, HttpStatus.OK);
         } catch (Exception e) {

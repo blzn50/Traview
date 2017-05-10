@@ -40,21 +40,6 @@ public class Recommender {
         this.recommendedItems = recommendedItems;
     }
 
-    //    DataModel dataModel = new MySQLJDBCDataModel(dataSource, "review", "user_id", "mahout_place_id", "rating", "time");
-//    UserSimilarity userSimilarity = new LogLikelihoodSimilarity(dataModel);
-//    List<RecommendedItem> recommendedItems = new ArrayList<>();
-//    UserNeighborhood userNeighborhood;
-//        try {
-//        userNeighborhood = new NearestNUserNeighborhood(10, userSimilarity, dataModel);
-//        UserBasedRecommender recommender = new GenericUserBasedRecommender(dataModel, userNeighborhood, userSimilarity);
-//        recommendedItems = recommender.recommend(2, 3);
-//
-//    } catch (TasteException e) {
-//        e.printStackTrace();
-//    }
-//        for (RecommendedItem recommendation : recommendedItems) {
-//        System.out.println(recommendation);
-//    }
     private List<RecommendedItem> recommendedItems = new ArrayList<>();
     private UserBasedRecommender recommender;
     @PostConstruct
@@ -72,35 +57,12 @@ public class Recommender {
         try {
             userNeighborhood = new NearestNUserNeighborhood(10, userSimilarity, dataModel);
             recommender = new GenericUserBasedRecommender(dataModel, userNeighborhood, userSimilarity);
-//            recommendedItems = recommender.recommend(2, 4);
         } catch (TasteException e) {
             e.printStackTrace();
         }
-//        System.out.println("post construct");
-//        for (RecommendedItem recommendation : recommendedItems) {
-//            System.out.println(recommendation);
-//        }
-//        System.out.println("time 1 ");
-//        try {
-//            recommendedItems = recommender.recommend(3, 4);
-//        } catch (TasteException e) {
-//            e.printStackTrace();
-//        }
-//        for (RecommendedItem recommendation : recommendedItems) {
-//            System.out.println(recommendation);
-//        }
-//        System.out.println("time 2 ");
     }
     @Bean(name = "userBasedRecommender")
     public UserBasedRecommender userBasedRecommender() {
         return recommender;
     }
-//    public List getResult(long userid) {
-//        try {
-//            return recommender.recommend(userid, 4);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return new ArrayList<>();
-//        }
-//    }
 }

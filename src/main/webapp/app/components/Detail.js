@@ -31,22 +31,56 @@ class SubDetail extends React.Component{
     for (var m=0; m<(5-this.props.location.state.item.avgRating);m++){
       stars.push((<span className="glyphicon glyphicon-star-empty"></span>))
     }
-    return (
-      <div>
-      <div className="header" style={{marginTop:'30px'}} >
-        <h1 style={{fontSize:'30px',marginBottom:'30px',marginLeft:'30px'}}> {this.props.location.state.item.placeName} &nbsp; &nbsp;
-          {
-            stars.map(star=>(
-              star
-            ))
-          }
-        </h1>
-      </div>
-          <div className="container-fluid detail">
-            <div className="row detail-row">
-              <div className="col-sm-6 image-col-sm-6">
-                <img style={{width:'100%',height:'auto'}} src={this.props.location.state.item.photos[0]} />
-              </div>
+  return (
+    <div>
+    <div className="header" style={{marginTop:'30px'}} >
+      <h1 style={{fontSize:'30px',marginBottom:'30px',marginLeft:'30px'}}> {props.location.state.item.placeName} &nbsp; &nbsp;
+        {
+          stars.map(star=>(
+            star
+          ))
+        }
+      </h1>
+    </div>
+        <div className="container-fluid detail">
+          <div className="row detail-row">
+            <div className="col-sm-6 image-col-sm-6">
+                <div id="myCarousel" className="carousel slide" data-ride="carousel">
+                    <ol className="carousel-indicators">
+                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                          <li data-target="#myCarousel" data-slide-to="1"></li>
+                          <li data-target="#myCarousel" data-slide-to="2"></li>
+                          <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol>
+                    <div className="carousel-inner" role="listbox">
+                          <div className="item active">
+                          <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
+                          </div>
+
+                            <div className="item">
+                             <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
+                            </div>
+                             <div className="item">
+                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
+                            </div>
+                            <div className="item">
+                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
+                            </div>
+                        </div>
+
+
+                        <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span className="sr-only">Previous</span>
+                        </a>
+                        <a className="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span className="sr-only">Next</span>
+                        </a>
+                    </div>
+
+            </div>
+>>>>>>> 06d892dadc5301f746166121703eaa37e385bf9f
 
               <div className="col-sm-6 detail-col-sm-6">
                 <div style={{backgroundColor: '#fff',padding: '15px'}}>

@@ -36,6 +36,7 @@ class SubResultItem extends React.Component{
               <span className="glyphicon glyphicon-star-empty"></span>
               <span className="glyphicon glyphicon-star-empty"></span>
               <span className="glyphicon glyphicon-star-empty"></span> */}
+
               <span style={{float:'right'}}>
               <a onClick={this.toDetail}
                 style={{'marginLeft':'20px'}}

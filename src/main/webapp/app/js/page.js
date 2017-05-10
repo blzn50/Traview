@@ -63,6 +63,30 @@ $(document).ready(function() {
 		displayedPages:3,
 		currentPage: 1
 	});
+        
+        var row_width = $('.service-row').find('.col-sm-8').height();
+	var width = $(window).width();
+	var doc_width = $(document).width();
+	console.log("row sjosa" + row_width);
+	console.log("width" + width);
+	console.log("dociwhdh" + doc_width);
+	if (width < 650) {
+		$('#screenbg').find('.search_big').text("");
+		$('.search_index').css('padding-top', '15px')
+	} else {
+		$('#screenbg').find('.search_big').text("Search");
+		$('.search_index').css('padding-top', '30px');
+	}
+
+	$('.service-row').find('.col-sm-3').css('height', row_width);
+	
+
+
+	/* add review */
+	$("#add-review ,#cancel-review").click(function(){
+		$('#review-form').toggle();
+	});
+
 
 
 
