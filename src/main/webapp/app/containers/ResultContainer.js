@@ -3,7 +3,7 @@ var NavBar = require('../components/NavBar')
 var SearchBar = require('../components/SearchBar')
 var ResultItem = require('../components/ResultItem')
 var RecommendContainer = require('./RecommendContainer')
-var TopRatedContainer = require('./TopRatedContainer')
+var NearByContainer = require('./NearByContainer')
 var Error = require('../components/Error')
 var Map = require('../components/Map')
 import {searchFetching} from '../actions/data'
@@ -74,6 +74,7 @@ class SubResultContainer extends React.Component{
                <Error message='No result was found '/>
              )}
           <RecommendContainer />
+          <NearByContainer keyword={this.props.routeParams.query} />
           <div className="jumbotron copyright">
             <p>Traview&copy; 2017 privacy policy</p>
           </div>

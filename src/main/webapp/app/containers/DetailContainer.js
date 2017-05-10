@@ -6,12 +6,18 @@ var Review = require('../components/Review')
 var SearchBar = require('../components/SearchBar')
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
+import {detailFetching} from '../actions/data'
 
 class SubDetailContainer extends React.Component{
   constructor(props){
     super(props)
   }
+  componentDidMount(){
+    const placeId = this.props.location.state.item.placeId
+    this.props.detailFetching(placeId)
+  }
   render(){
+    const reviews = this.props.state.detailLocation.places.reviewList
     return (
       <div>
       <NavBar />
@@ -23,11 +29,23 @@ class SubDetailContainer extends React.Component{
 	        <div className="row review-row">
 
 	        		<ReviewForm item={this.props.location.state.item} />
-
-		        	<Review />
-              <Review />
-              <Review />
-              <Review />
+              {
+                this.props.state.detailLocation.fetched===true
+                ? (<div>
+                  {
+                  reviews.map(review => (
+                  <Review review={review} />
+                ))
+              }
+                  </div>
+                  )
+                : (
+                  <div>
+                    <p>There is no review about this place yet</p>
+                  </div>
+                )
+              }
+            }
 	        </div>
 	       </div>
 	    </div>
@@ -44,8 +62,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchFetching: (query) => {
-      dispatch(searchFetching(query))
+    detailFetching: (id) => {
+      dispatch(detailFetching(id))
     }
   }
 }

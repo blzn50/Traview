@@ -31,10 +31,18 @@ class SubDetail extends React.Component{
     for (var m=0; m<(5-this.props.location.state.item.avgRating);m++){
       stars.push((<span className="glyphicon glyphicon-star-empty"></span>))
     }
+    const images = []
+    for (var n=1; n<this.props.location.state.item.photos.length; n++){
+      images.push((
+        <div className="item">
+          <img style={{width:'100%',height:'auto'}} src={this.props.location.state.item.photos[n]} />
+        </div>
+    ))
+    }
   return (
     <div>
     <div className="header" style={{marginTop:'30px'}} >
-      <h1 style={{fontSize:'30px',marginBottom:'30px',marginLeft:'30px'}}> {props.location.state.item.placeName} &nbsp; &nbsp;
+      <h1 style={{fontSize:'30px',marginBottom:'30px',marginLeft:'30px'}}> {this.props.location.state.item.placeName} &nbsp; &nbsp;
         {
           stars.map(star=>(
             star
@@ -54,18 +62,14 @@ class SubDetail extends React.Component{
                     </ol>
                     <div className="carousel-inner" role="listbox">
                           <div className="item active">
-                          <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
+                          <img style={{width:'100%',height:'auto'}} src={this.props.location.state.item.photos[0]} />
                           </div>
 
-                            <div className="item">
-                             <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
-                            </div>
-                             <div className="item">
-                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
-                            </div>
-                            <div className="item">
-                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />
-                            </div>
+                            {
+                              images.map(image=>(
+                                image
+                              ))
+                            }
                         </div>
 
 
@@ -80,7 +84,6 @@ class SubDetail extends React.Component{
                     </div>
 
             </div>
->>>>>>> 06d892dadc5301f746166121703eaa37e385bf9f
 
               <div className="col-sm-6 detail-col-sm-6">
                 <div style={{backgroundColor: '#fff',padding: '15px'}}>
