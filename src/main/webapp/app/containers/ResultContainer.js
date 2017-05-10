@@ -72,7 +72,6 @@ class SubResultContainer extends React.Component{
              : (
                <Error message='No result was found '/>
              )}
-          <TopRatedContainer />
           <RecommendContainer />
           <div className="jumbotron copyright">
             <p>Traview&copy; 2017 privacy policy</p>

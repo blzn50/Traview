@@ -22,7 +22,7 @@ class SubDetailContainer extends React.Component{
 
 	        <div className="row review-row">
 
-	        		<ReviewForm />
+	        		<ReviewForm item={this.props.location.state.item} />
 
 		        	<Review />
               <Review />

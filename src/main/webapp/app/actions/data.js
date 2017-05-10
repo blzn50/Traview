@@ -28,17 +28,15 @@ export function searchSuccess(data){
   }
 }
 
-export function recommendRequest(info){
+export function recommendRequest(){
   return {
-    type: RECOMMEND_REQUEST,
-    payload: info
+    type: RECOMMEND_REQUEST
   }
 }
 
-export function recommendFailed(error){
+export function recommendFailed(){
   return {
-    type: RECOMMEND_FAILED,
-    error: error
+    type: RECOMMEND_FAILED
   }
 }
 
@@ -71,23 +69,23 @@ export function searchFetching(query){
   }
 }
 
-export function recommendFetching(info){
-  dispatch(recommendRequest(info))
-  return fetch(`${API_URL}/recommend`,{
-    method: post,
-    credentials: 'include',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(info)
-  })
-  .then(checkHttpStatus)
-  .then(parseJSON)
-  .then(response => {
-    dispatch(recommendSuccess(response.data))
-  })
-  .catch(error =>{
-    dispatch(recommendFailed(error))
-  })
+export function recommendFetching(){
+  return (dispatch) => {
+    dispatch(recommendRequest())
+    fetch(`/recommend`,{
+      method: 'GET',
+      credentials: 'include'
+    })
+    .then(response => {
+      if(response.status===200){
+        return response.json()
+      }
+      else{
+        dispatch(recommendFailed())
+      }
+    })
+    .then(json => {
+      dispatch(recommendSuccess(json))
+    })
+  }
 }

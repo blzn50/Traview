@@ -35,3 +35,36 @@ export function searchedLocation(state={
       return state
     }
   }
+
+  export function recommendLocation(state={
+    isFetching: false,
+    fetched: false,
+    places: [],
+    statusText: ''
+  },action){
+    switch (action.type){
+      case RECOMMEND_FAILED:
+        return Object.assign({},state,{
+            isFetching: false,
+            fetched: false,
+            statusText: 'No recommendation',
+            places: []
+        })
+      case RECOMMEND_REQUEST:
+        return Object.assign({},state,{
+          isFetching: true,
+          fetched: false,
+          statusText: '',
+          places: []
+        })
+      case RECOMMEND_SUCCESS:
+        return Object.assign({},state,{
+          isFetching: false,
+          fetched: true,
+          statusText: 'Recommendation fetched',
+          places: action.payload
+        })
+      default:
+        return state
+      }
+    }

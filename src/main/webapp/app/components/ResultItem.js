@@ -11,9 +11,7 @@ class SubResultItem extends React.Component{
     this.props.router.push({
       pathname: 'detail',
       state: {
-        item: this.props.item,
-        lat: this.props.lat,
-        lng: this.props.lng
+        item: this.props.item
       }
     })
   }
