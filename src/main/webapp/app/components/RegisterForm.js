@@ -4,7 +4,7 @@ function RegisterForm(props){
   return (
     <div id="logincss" className="container">
         <div id="sub1" className="top animated fadeInDown">
-            <h1 id="titlelogin"><a href="index.html" id="logo"> Traview</a></h1>
+            <h1 id="titlelogin"><a href="/" id="logo"> Traview</a></h1>
         </div>
         <div id="sub2" className="login-box animated fadeInUp">
             <div id="sub2-1" className="box-header">

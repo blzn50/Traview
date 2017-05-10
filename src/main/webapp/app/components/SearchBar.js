@@ -2,6 +2,7 @@ var React = require('react')
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
 import {searchFetching} from '../actions/data'
+import SearchBox from './search-box';
 
 class SubSearchBar extends React.Component{
   constructor(props){
@@ -25,8 +26,10 @@ class SubSearchBar extends React.Component{
   render(){
     return (
         <div id="main" className="main_search_bar">
-                <p id="title">Search Your Destination</p> 
-            <div className="search_index" style={{paddingTop:'25px'}}>
+            <div className="head top animated fadeInDown">
+                <p id="title"> Search Your Destination</p>
+            </div>
+            <div className="search_index">
                 <div className="input-group">
                     <input type="text" className="form-control" placeholder="Enter the Place" name="srch-term"
                       onChange={this.onChange} id="srch-term" />

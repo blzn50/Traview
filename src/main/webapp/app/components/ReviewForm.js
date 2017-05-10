@@ -95,17 +95,30 @@ class SubReviewForm extends React.Component{
            <div id="SearchContainer">
             <form>
                 <div className="group">
-                    <input onChange={this.updateReview} type="text" id="LastName" required />
+                    <input onChange={this.updateReview} type="text" id="review" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
                     <label>Your Review</label>
                 </div>
 
                 <div className="group">
-                    <input onChange={this.updateRating} type="email" id="Email" required />
+                    {/* <input onChange={this.updateRating} type="email" id="Email" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
-                    <label>Rating</label>
+                    <label>Rating</label> */}
+                    <div className="dropdown">
+                        <a className="dropdown-toggle" data-toggle="dropdown">
+                            <span>RATINGS</span>
+                            <i className="caret"></i>
+                        </a>
+                        <ul className="dropdown-menu">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <button onClick={this.submitReview} id="Send"> Submit Review </button>
             </form>

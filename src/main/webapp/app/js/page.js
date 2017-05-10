@@ -32,14 +32,14 @@ $(document).ready(function() {
 	$(document).scroll(function() {
 		var y = $(this).scrollTop();
 		if (y > 200) {
-			$(".arrow-up i").fadeIn();
+			$(".arrow-up i").show();
 		} else {
-			$(".arrow-up i").fadeOut();
+			$(".arrow-up i").hide();
 		}
 	});
 
 	/* scroll to top */
-	$(".arrow-up i").click(function() {
+	$(".arrow-up").click(function() {
 		$("html, body").animate({
 			scrollTop: 0
 		}, "slow");
@@ -67,13 +67,12 @@ $(document).ready(function() {
         var row_width = $('.service-row').find('.col-sm-8').height();
 	var width = $(window).width();
 	var doc_width = $(document).width();
-	console.log("row sjosa" + row_width);
-	console.log("width" + width);
-	console.log("dociwhdh" + doc_width);
 	if (width < 650) {
+                $(".main_search_bar").find("#title").css('font-size' , '2em');
 		$('#screenbg').find('.search_big').text("");
-		$('.search_index').css('padding-top', '15px')
+		$('.search_index').css('padding-top', '70px')
 	} else {
+                $(".main_search_bar").find("#title").css('font-size' , '5em');
 		$('#screenbg').find('.search_big').text("Search");
 		$('.search_index').css('padding-top', '30px');
 	}
@@ -86,8 +85,32 @@ $(document).ready(function() {
 	$("#add-review ,#cancel-review").click(function(){
 		$('#review-form').toggle();
 	});
-
-
+        
+        var url = "http://localhost:8081/#/" || "http://traviewdev.herokuapp.com/#/" ||"http://traviewdemo.herokuapp.com/#/"
+        || "http://localhost:8080/#/";
+        $(window).bind('hashchange', function() {
+		if(window.location.href==url) {
+                        
+                        $('.head').css('display','block');   
+		}else{
+                    $(".main_search_bar>div").removeClass("top animated fadeInDown");
+                    $('.main_search_bar>div').find('p').hide();
+                    $('.search_index').css({
+                        'padding-top':'10px'
+                    });
+                }
+        });
+		if(window.location.href==url) {         
+                        $('.head').css('display','block');
+                        $('.search_index').addClass("top animated fadeInUp");
+		}else{
+                    $(".main_search_bar>div").removeClass("top animated fadeInDown");
+                    $('.main_search_bar>div').find('p').hide();
+                    $('.search_index').css({
+                        'padding-top':'10px'
+                    });
+                }
+	
 
 
 });
