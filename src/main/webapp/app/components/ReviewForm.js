@@ -50,19 +50,27 @@ class ReviewForm extends React.Component{
           </h3>
            <div id="SearchContainer">
             <form>
-
                 <div className="group">
-                    <input type="text" id="LastName" required />
+                    <input type="text" id="review" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
                     <label>Your Review</label>
                 </div>
 
                 <div className="group">
-                    <input type="email" id="Email" required />
-                    <span className="highlight"></span>
-                    <span className="bar"></span>
-                    <label>Rating</label>
+                    <div className="dropdown">	
+                        <a className="dropdown-toggle" data-toggle="dropdown">
+                            <span>RATINGS</span>
+                            <i className="caret"></i>
+                        </a>
+                        <ul className="dropdown-menu">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <button type="submit" id="Send"> Submit Review </button>
             </form>
