@@ -37,9 +37,6 @@ import java.util.List;
 @RestController
 public class PlacesController {
     @Autowired
-    private DataSource dataSource;
-    private List<RecommendedItem> recommendedItems;
-    @Autowired
     private UserBasedRecommender userBasedRecommender;
     @Autowired
     private ReviewRepo reviewRepo;
@@ -55,15 +52,18 @@ public class PlacesController {
         for (int i = 0; i < result.length(); i++) {
             String placeId = result.getJSONObject(i).getString("place_id");
             Place placeDetail = getPlaceDetailFromId(placeId);
+            placeDetail.setReviewList(getListReviewByPlaceId(placeId));
             searchResults.add(placeDetail);
         }
         return new ResponseEntity<>(searchResults, HttpStatus.OK);
     }
+
     @RequestMapping("/recommend")
     public ResponseEntity<?> recommendPlace() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         Account currentUser = accountRepo.findByUsername(username);
+        List<RecommendedItem> recommendedItems;
         try {
             recommendedItems = userBasedRecommender.recommend(currentUser.getUserid(), 4);
         } catch (TasteException e) {
@@ -74,10 +74,16 @@ public class PlacesController {
         for (RecommendedItem recommendation : recommendedItems) {
             String placeId = reviewRepo.findPlaceIdByHashCode(recommendation.getItemID());
             Place placeDetail = getPlaceDetailFromId(placeId);
+            placeDetail.setReviewList(getListReviewByPlaceId(placeId));
             searchResults.add(placeDetail);
         }
         return new ResponseEntity<>(searchResults, HttpStatus.OK);
     }
+
+    private List<Review> getListReviewByPlaceId(String place_id) {
+        return reviewRepo.findReviewUsingPlaceId(place_id);
+    }
+
     private Place getPlaceDetailFromId(String placeId) {
         String detailSearchUrl = Utils.apiPlaceDetailSearchUrl + Utils.place_id + placeId;
         String jsonResponse = Utils.getJsonFromGetRequest(detailSearchUrl);
