@@ -37,13 +37,13 @@ function SubDetail(props){
                           </div>
 
                             <div className="item">
-                             <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />         
+                             <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[1]} />         
                             </div>
                              <div className="item">
-                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />      
+                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[2]} />      
                             </div>
                             <div className="item">
-                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[0]} />      
+                                <img style={{width:'100%',height:'auto'}} src={props.location.state.item.photos[3]} />      
                             </div>
                         </div>
 

@@ -58,12 +58,12 @@ $(document).ready(function() {
 	// pagination
 	$('#pagination').pagination({
 		pages: 10,
-		
+
 		cssStyle: 'light-theme',
 		displayedPages:3,
 		currentPage: 1
 	});
-        
+
         var row_width = $('.service-row').find('.col-sm-8').height();
 	var width = $(window).width();
 	var doc_width = $(document).width();
@@ -78,20 +78,20 @@ $(document).ready(function() {
 	}
 
 	$('.service-row').find('.col-sm-3').css('height', row_width);
-	
+
 
 
 	/* add review */
 	$("#add-review ,#cancel-review").click(function(){
 		$('#review-form').toggle();
 	});
-        
-        var url = "http://localhost:8081/#/" || "http://traviewdev.herokuapp.com/#/" ||"http://traviewdemo.herokuapp.com/#/"
+
+        var url = "http://localhost:8081/#/" || "https://traviewdev.herokuapp.com/#/" ||"https://traviewdemo.herokuapp.com/#/"
         || "http://localhost:8080/#/";
         $(window).bind('hashchange', function() {
 		if(window.location.href==url) {
-                        
-                        $('.head').css('display','block');   
+
+                        $('.head').css('display','block');
 		}else{
                     $(".main_search_bar>div").removeClass("top animated fadeInDown");
                     $('.main_search_bar>div').find('p').hide();
@@ -100,7 +100,7 @@ $(document).ready(function() {
                     });
                 }
         });
-		if(window.location.href==url) {         
+		if(window.location.href==url) {
                         $('.head').css('display','block');
                         $('.search_index').addClass("top animated fadeInUp");
 		}else{
@@ -110,7 +110,7 @@ $(document).ready(function() {
                         'padding-top':'10px'
                     });
                 }
-	
+
 
 
 });
