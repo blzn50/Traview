@@ -40,7 +40,7 @@ class SubReviewForm extends React.Component{
       this.props.submitReview({
         rating: this.state.rating,
         user_comment: this.state.review,
-        userid: localStorage.getItem('username'),
+        username: localStorage.getItem('username'),
         place_id: this.props.item.placeId
       })
     }
