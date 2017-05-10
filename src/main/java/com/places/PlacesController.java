@@ -7,15 +7,8 @@ import com.places.model.Place;
 import com.review.model.Review;
 import com.review.model.ReviewRepo;
 import org.apache.mahout.cf.taste.common.TasteException;
-import org.apache.mahout.cf.taste.impl.model.jdbc.MySQLJDBCDataModel;
-import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
-import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
-import org.apache.mahout.cf.taste.impl.similarity.LogLikelihoodSimilarity;
-import org.apache.mahout.cf.taste.model.DataModel;
-import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.UserBasedRecommender;
-import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +34,7 @@ public class PlacesController {
     private ReviewRepo reviewRepo;
     @Autowired
     private AccountRepo accountRepo;
+
     @RequestMapping("/search")
     public ResponseEntity<?> keywordSearch(@RequestParam("keyword") String keyword) {
         List<Place> searchResults = new ArrayList<>();
@@ -52,7 +45,28 @@ public class PlacesController {
         for (int i = 0; i < result.length(); i++) {
             String placeId = result.getJSONObject(i).getString("place_id");
             Place placeDetail = getPlaceDetailFromId(placeId);
-            placeDetail.setReviewList(getListReviewByPlaceId(placeId));
+            searchResults.add(placeDetail);
+        }
+        return new ResponseEntity<>(searchResults, HttpStatus.OK);
+    }
+
+    @RequestMapping("/searchDetail")
+    public ResponseEntity<?> placeDetailSearch(@RequestParam("placeId") String placeId) {
+        Place placeDetail = getPlaceDetailFromId(placeId);
+        placeDetail.setReviewList(getListReviewByPlaceId(placeId));
+        return new ResponseEntity<>(placeDetail, HttpStatus.OK);
+    }
+
+    @RequestMapping("/nearBy")
+    public ResponseEntity<?> findNearbyPlaces(@RequestParam("keyword") String keyword, @RequestParam("location") String location) {
+        List<Place> searchResults = new ArrayList<>();
+        String nearbySearchUrl = Utils.apiNearbySearch + location + Utils.and + Utils.keyword + keyword;
+        String jsonResponse = Utils.getJsonFromGetRequest(nearbySearchUrl);
+        JSONObject jsonObject = new JSONObject(jsonResponse.trim());
+        JSONArray result = jsonObject.getJSONArray("results");
+        for (int i = 0; i < result.length(); i++) {
+            String placeId = result.getJSONObject(i).getString("place_id");
+            Place placeDetail = getPlaceDetailFromId(placeId);
             searchResults.add(placeDetail);
         }
         return new ResponseEntity<>(searchResults, HttpStatus.OK);
