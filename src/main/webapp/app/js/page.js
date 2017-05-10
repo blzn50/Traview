@@ -32,14 +32,14 @@ $(document).ready(function() {
 	$(document).scroll(function() {
 		var y = $(this).scrollTop();
 		if (y > 200) {
-			$(".arrow-up i").fadeIn();
+			$(".arrow-up i").show();
 		} else {
-			$(".arrow-up i").fadeOut();
+			$(".arrow-up i").hide();
 		}
 	});
 
 	/* scroll to top */
-	$(".arrow-up i").click(function() {
+	$(".arrow-up").click(function() {
 		$("html, body").animate({
 			scrollTop: 0
 		}, "slow");
@@ -86,22 +86,31 @@ $(document).ready(function() {
 		$('#review-form').toggle();
 	});
         
-        var url = window.location.href;
-        
-		if(url.indexOf("/#/detail") > -1) {
-		  $(".main_search_bar").find(".top animated fadeInDown").hide();
-                  $(".main_search_bar").removeClass(".search_index top animated fadeInUp");
-		}else if(url.indexOf("/#/result") > -1){
-                  $(".main_search_bar").find(".top animated fadeInDown").hide();
-                  $(".main_search_bar").removeClass(".search_index top animated fadeInUp");
+        var url = "http://localhost:8081/#/" || "http://traviewdev.herokuapp.com/#/" ||"http://traviewdemo.herokuapp.com/#/"
+        || "http://localhost:8080/#/";
+        $(window).bind('hashchange', function() {
+		if(window.location.href==url) {
+                        
+                        $('.head').css('display','block');   
 		}else{
-                  $(".main_search_bar").find(".top animated fadeInDown").show();
-                  $(".main_search_bar").addClass(".search_index top animated fadeInUp");  
+                    $(".main_search_bar>div").removeClass("top animated fadeInDown");
+                    $('.main_search_bar>div').find('p').hide();
+                    $('.search_index').css({
+                        'padding-top':'10px'
+                    });
+                }
+        });
+		if(window.location.href==url) {         
+                        $('.head').css('display','block');
+                        $('.search_index').addClass("top animated fadeInUp");
+		}else{
+                    $(".main_search_bar>div").removeClass("top animated fadeInDown");
+                    $('.main_search_bar>div').find('p').hide();
+                    $('.search_index').css({
+                        'padding-top':'10px'
+                    });
                 }
 	
-
-
-
 
 
 });

@@ -25,12 +25,21 @@ class SubSearchBar extends React.Component{
   }
   render(){
     return (
-        <div id="main" className="main_search_bar">    
-            <div className="top animated fadeInDown">
-                <p id="title">Search Your Destination</p>
+        <div id="main" className="main_search_bar">
+            <div className="head top animated fadeInDown">
+                <p id="title"> Search Your Destination</p>
             </div>
-            <div className="search_index top animated fadeInUp">
-             <SearchBox onChange={this.onChange} handleSearch={this.handleSearch} />
+            <div className="search_index">
+                <div className="input-group">
+                    <input type="text" className="form-control" placeholder="Enter the Place" name="srch-term"
+                      onChange={this.onChange} id="srch-term" />
+                        <div className="input-group-btn">
+                            <button className="btn btn-default" type="submit"
+                              onClick={this.handleSearch} name="search">
+                              <i className="glyphicon glyphicon-search" id="screenbg"><span className="search_big">Search</span></i>
+                            </button>
+                        </div>
+                </div>
             </div>
         </div>
       )

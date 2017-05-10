@@ -54,7 +54,7 @@ class SubResultContainer extends React.Component{
     return (
          <div>
           <NavBar />
-          <SearchBox />
+          <SearchBar />
           <div id="main_result">
           {this.props.state.searchedLocation.places.length!==0 ? ( <div className="container-fluid service" id="service">
                 <div className="row service-row">
@@ -82,8 +82,8 @@ class SubResultContainer extends React.Component{
             <p>Traview&copy; 2017 privacy policy</p>
           </div>
             <i className="arrow-up">
-            <i className="fa fa-arrow-up" style={{'fontSize':'25px',color:'#fff','paddingTop':'12px','paddingLeft':'15px'}} aria-hidden="true"></i>
-          </i>
+                <i className="fa fa-arrow-up" style={{'fontSize':'25px',color:'#fff','paddingTop':'12px','paddingLeft':'15px'}} aria-hidden="true"></i>
+            </i>
         </div>
         </div>
     )
