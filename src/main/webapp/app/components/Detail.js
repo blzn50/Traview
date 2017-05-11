@@ -24,6 +24,7 @@ class SubDetail extends React.Component{
       }.bind(this))
   }
   render(){
+
     const stars = []
     for (var i=0; i<this.props.location.state.item.avgRating; i++){
       stars.push((<span className="glyphicon glyphicon-star"></span>))
@@ -31,6 +32,7 @@ class SubDetail extends React.Component{
     for (var m=0; m<(5-this.props.location.state.item.avgRating);m++){
       stars.push((<span className="glyphicon glyphicon-star-empty"></span>))
     }
+
     const images = []
     for (var n=1; n<this.props.location.state.item.photos.length; n++){
       images.push((
@@ -64,14 +66,12 @@ class SubDetail extends React.Component{
                           <div className="item active">
                           <img style={{width:'100%',height:'auto'}} src={this.props.location.state.item.photos[0]} />
                           </div>
-
                             {
                               images.map(image=>(
                                 image
                               ))
                             }
                         </div>
-
 
                         <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                             <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
