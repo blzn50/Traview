@@ -26,9 +26,9 @@ class SubSearchBar extends React.Component{
   render(){
     return (
         <div id="main" className="main_search_bar">
-            <div className="head top animated fadeInDown">
-                <p id="title"> Search Your Destination</p>
-            </div>
+            // <div className="head top animated fadeInDown">
+            //     <p id="title"> Search Your Destination</p>
+            // </div>
             <div className="search_index">
                 <div className="input-group">
                     <input type="text" className="form-control" placeholder="Enter the Place" name="srch-term"

@@ -86,31 +86,31 @@ $(document).ready(function() {
 		$('#review-form').toggle();
 	});
 
-        var url = "http://localhost:8081/#/" || "https://traviewdev.herokuapp.com/#/" ||"https://traviewdemo.herokuapp.com/#/"
-        || "http://localhost:8080/#/";
-        $(window).bind('hashchange', function() {
-		if(window.location.href==url) {
-
-                        $('.head').css('display','block');
-		}else{
-                    $(".main_search_bar>div").removeClass("top animated fadeInDown");
-                    $('.main_search_bar>div').find('p').hide();
-                    $('.search_index').css({
-                        'padding-top':'10px'
-                    });
-                }
-        });
-		if(window.location.href==url) {
-                        $('.head').css('display','block');
-                        $('.search_index').addClass("top animated fadeInUp");
-		}else{
-                    $(".main_search_bar>div").removeClass("top animated fadeInDown");
-                    $('.main_search_bar>div').find('p').hide();
-                    $('.search_index').css({
-                        'padding-top':'10px'
-                    });
-                }
-
+        // var url = "http://localhost:8081/#/" || "https://traviewdev.herokuapp.com/#/" ||"https://traviewdemo.herokuapp.com/#/"
+        // || "http://localhost:8080/#/";
+        // $(window).bind('hashchange', function() {
+		// if(window.location.href==url) {
+		//
+        //                 $('.head').css('display','block');
+		// }else{
+        //             $(".main_search_bar>div").removeClass("top animated fadeInDown");
+        //             $('.main_search_bar>div').find('p').hide();
+        //             $('.search_index').css({
+        //                 'padding-top':'10px'
+        //             });
+        //         }
+        // });
+		// if(window.location.href==url) {
+        //                 $('.head').css('display','block');
+        //                 $('.search_index').addClass("top animated fadeInUp");
+		// }else{
+        //             $(".main_search_bar>div").removeClass("top animated fadeInDown");
+        //             $('.main_search_bar>div').find('p').hide();
+        //             $('.search_index').css({
+        //                 'padding-top':'10px'
+        //             });
+        //         }
+		//
 
 
 });
