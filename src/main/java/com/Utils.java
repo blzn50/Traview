@@ -8,11 +8,17 @@ import org.springframework.web.client.RestTemplate;
  * Created by khanguyen on 4/26/17.
  */
 public class Utils {
-    public static String apiKey = "AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ";
-    public static String apiPlaceTextSearchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ&";
-    public static String apiPlaceDetailSearchUrl = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ&";
-    public static String apiPhotoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ&photoreference=";
-    public static String apiNearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ&radius=2000&location=";
+//    public static String apiKey = "AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ";
+//    public static String apiPlaceTextSearchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ&";
+//    public static String apiPlaceDetailSearchUrl = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ&";
+//    public static String apiPhotoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ&photoreference=";
+//    public static String apiNearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8G9ykgRsH0j4qydHmljXj2j9GJ-NMfWQ&radius=2000&location=";
+    public static String apiKey = "AIzaSyCXGjg3Hjbb1Jt9dZo8VSp8c3co1i5zZuM";
+    public static String apiPlaceTextSearchUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyCXGjg3Hjbb1Jt9dZo8VSp8c3co1i5zZuM&";
+    public static String apiPlaceDetailSearchUrl = "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyCXGjg3Hjbb1Jt9dZo8VSp8c3co1i5zZuM&";
+    public static String apiPhotoUrl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyCXGjg3Hjbb1Jt9dZo8VSp8c3co1i5zZuM&photoreference=";
+    public static String apiNearbySearch = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCXGjg3Hjbb1Jt9dZo8VSp8c3co1i5zZuM&radius=2000&location=";
+
     public static String keyword = "keyword=";
     public static String query = "query=";
     public static String key = "key=";

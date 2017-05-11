@@ -11,9 +11,7 @@ class SubResultItem extends React.Component{
     this.props.router.push({
       pathname: 'detail',
       state: {
-        item: this.props.item,
-        lat: this.props.lat,
-        lng: this.props.lng
+        item: this.props.item
       }
     })
   }
@@ -38,7 +36,7 @@ class SubResultItem extends React.Component{
               <span className="glyphicon glyphicon-star-empty"></span>
               <span className="glyphicon glyphicon-star-empty"></span>
               <span className="glyphicon glyphicon-star-empty"></span> */}
-            
+
               <span style={{float:'right'}}>
               <a onClick={this.toDetail}
                 style={{'marginLeft':'20px'}}
