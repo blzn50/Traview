@@ -7,11 +7,6 @@ class SubMain extends React.Component{
   constructor(props){
     super(props)
   }
-  getCurrentLocation(){
-    navigator.geolocation.getCurrentPosition((position)=>{
-      //  console.log(position);
-    })
-  }
   componentDidMount(){
     if (localStorage.getItem('username')!==null){
         console.log('have cookie')
