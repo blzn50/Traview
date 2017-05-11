@@ -3,7 +3,7 @@ var NavBar = require('../components/NavBar')
 var SearchBar = require('../components/SearchBar')
 var ResultItem = require('../components/ResultItem')
 var RecommendContainer = require('./RecommendContainer')
-var TopRatedContainer = require('./TopRatedContainer')
+var NearByContainer = require('./NearByContainer')
 var Error = require('../components/Error')
 var Map = require('../components/Map')
 import {searchFetching} from '../actions/data'
@@ -29,8 +29,9 @@ class SubResultContainer extends React.Component{
   componentWillReceiveProps(nextProps){
     console.log(nextProps)
     if (nextProps.state.searchedLocation.fetched === true
-          &&nextProps.state.searchedLocation.isFetching === false
-          && nextProps.location.pathname===this.props.location.pathname){
+          && nextProps.state.searchedLocation.isFetching === false
+          && nextProps.location.pathname===this.props.location.pathname
+          && nextProps.state.searchedLocation.places.length!==0){
       this.locationOnMap(nextProps.state.searchedLocation.places[0].address)
     }
     else if (nextProps.location.pathname!==this.props.location.pathname){
@@ -76,8 +77,8 @@ class SubResultContainer extends React.Component{
              : (
                <Error message='No result was found '/>
              )}
-          <TopRatedContainer />
           <RecommendContainer />
+          {/* <NearByContainer keyword={this.props.routeParams.query} /> */}
           <div className="jumbotron copyright">
             <p>Traview&copy; 2017 privacy policy</p>
           </div>

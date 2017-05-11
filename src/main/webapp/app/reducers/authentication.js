@@ -3,25 +3,6 @@ import {LOGIN_REQUEST, LOGIN_SUCCESS,
         REGISTER_SUCCESS, REGISTER_FAILURE, REGISTER}
 from '../actions/authentication';
 
-// const user = {
-//   isFetching:false,
-//   fetched: false,
-//   token: '',
-//   username: '',
-//   statusText: ''
-// }
-//
-// const INITIAL_STATE = {
-//   error: '',
-//   user: {
-//     isFetching:false,
-//     fetched: false,
-//     token: '',
-//     username: '',
-//     statusText: ''
-//   }
-// }
-
 export function loginUser(state={
   isFetching: false,
   fetched: false,

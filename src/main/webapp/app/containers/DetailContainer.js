@@ -7,12 +7,18 @@ var SearchBar = require('../components/SearchBar')
 import SearchBox from '../components/search-box'
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
+import {detailFetching} from '../actions/data'
 
 class SubDetailContainer extends React.Component{
   constructor(props){
     super(props)
   }
+  componentDidMount(){
+    const placeId = this.props.location.state.item.placeId
+    this.props.detailFetching(placeId)
+  }
   render(){
+    const reviews = this.props.state.detailLocation.places.reviewList
     return (
       <div>
       <NavBar />
@@ -20,14 +26,27 @@ class SubDetailContainer extends React.Component{
 		<div id="main_result" className="detail_page">
 			   <Detail />
         <div className="container-fluid review">
-	    <div className="row review-row">
-                <ReviewForm />
-		<Review />
-                <Review />
-                <Review />
-                <Review />
-	    </div>
-	</div>
+          <div className="row review-row">
+
+	        		<ReviewForm item={this.props.location.state.item} />
+              {
+                this.props.state.detailLocation.fetched===true
+                ? (<div>
+                  {
+                  reviews.map(review => (
+                  <Review review={review} />
+                ))
+              }
+                  </div>
+                  )
+                : (
+                  <div>
+                    <p>There is no review about this place yet</p>
+                  </div>
+                )
+              }
+	        </div>
+	       </div>
 	    </div>
     </div>
     )
@@ -42,8 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchFetching: (query) => {
-      dispatch(searchFetching(query))
+    detailFetching: (id) => {
+      dispatch(detailFetching(id))
     }
   }
 }

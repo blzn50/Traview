@@ -1,9 +1,15 @@
 var React = require('react')
+import {withRouter} from 'react-router'
+import {connect} from 'react-redux'
+import {submitReview} from '../actions/review'
 
-class ReviewForm extends React.Component{
+class SubReviewForm extends React.Component{
   constructor(props){
     super(props)
     this.toggleForm = this.toggleForm.bind(this)
+    this.submitReview = this.submitReview.bind(this)
+    this.updateReview = this.updateReview.bind(this)
+    this.updateRating = this.updateRating.bind(this)
     this.state = {
       formOn: false
     }
@@ -14,13 +20,52 @@ class ReviewForm extends React.Component{
       formOn: !this.state.formOn
     })
   }
+  updateReview(event){
+    event.preventDefault()
+    this.setState({
+      review: event.target.value
+    })
+  }
+  updateRating(event){
+    event.preventDefault()
+    this.setState({
+      rating: event.target.value
+    })
+  }
+  submitReview(event){
+    event.preventDefault()
+    if (this.props.state.loginUser.fetched==true){
+      const d = new Date()
+      this.props.submitReview({
+        rating: this.state.rating,
+        user_comment: this.state.review,
+        username: localStorage.getItem('username'),
+        place_id: this.props.item.placeId
+      })
+    }
+    else{
+      alert('You need to login to submit reviews.')
+    }
+  }
+  componentWillReceiveProps(nextProps){
+    if (nextProps.state.submitReview.fetched===true
+        &&nextProps.state.submitReview.isFetching===false
+        &&this.props.state.submitReview.isFetching===true){
+      alert('Your review is submitted. ')
+    }
+    else if(nextProps.state.submitReview.fetched==false
+        &&this.props.state.submitReview.isFetching==true){
+      alert('There are currently some errors. Please do it again other time.')
+    }
+  }
   render(){
+
     return (
       <div>
 
       <div style={{marginBottom: '15px',marginTop:'20px'}}>
         <button style={{marginLeft:'10px'}} className="btn btn-danger custom-className">REVIEWS
-          <span className="badge">4</span></button>
+          </button>
         <button id="add-review" className="btn btn-primary custom-className"
           style={{borderRadius:'5px', paddingLeft: '5px', marginLeft: '10px'}}
           onClick={this.toggleForm} >
@@ -43,7 +88,7 @@ class ReviewForm extends React.Component{
             }} >		Add Review
             </span>
             <button style={{float:'right'}} type="button" className="btn btn-danger btn-xs">
-              <span className="glyphicon glyphicon-remove text-center" id="cancel-review"
+              <span onClick={this.toggleForm} className="glyphicon glyphicon-remove text-center" id="cancel-review"
                 style={{color:'#fff', margin:'0 auto'}}>
               </span>
             </button>
@@ -51,28 +96,33 @@ class ReviewForm extends React.Component{
            <div id="SearchContainer">
             <form>
                 <div className="group">
-                    <input type="text" id="review" required />
+                    <input onChange={this.updateReview} type="text" id="review" required />
                     <span className="highlight"></span>
                     <span className="bar"></span>
                     <label>Your Review</label>
                 </div>
 
                 <div className="group">
-                    <div className="dropdown">	
+                    <input onChange={this.updateRating} type="number" id="Email" max="5" required />
+                    <span className="highlight"></span>
+                    <span className="bar"></span>
+                    <label>Rating (stars) </label>
+                    {/* <div className="dropdown">
                         <a className="dropdown-toggle" data-toggle="dropdown">
                             <span>RATINGS</span>
                             <i className="caret"></i>
                         </a>
                         <ul className="dropdown-menu">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
+                            <li><a>0</a></li>
+                            <li><a>1</a></li>
+                            <li><a>2</a></li>
+                            <li><a>3</a></li>
+                            <li><a>4</a></li>
+                            <li><a>5</a></li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
-                <button type="submit" id="Send"> Submit Review </button>
+                <button onClick={this.submitReview} id="Send"> Submit Review </button>
             </form>
           </div>
         </div>)
@@ -82,5 +132,21 @@ class ReviewForm extends React.Component{
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    state: state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    submitReview: (review) => {
+      dispatch(submitReview(review))
+    }
+  }
+}
+
+const ReviewForm = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubReviewForm))
 
 module.exports = ReviewForm
