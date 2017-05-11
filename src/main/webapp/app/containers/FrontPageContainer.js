@@ -7,6 +7,7 @@ class FrontPageContainer extends React.Component{
     return (
       <div>
         <NavBar />
+		
         <SearchBar />
       </div>
     )
