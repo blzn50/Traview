@@ -7,9 +7,7 @@ class FrontPageContainer extends React.Component{
     return (
       <div>
         <NavBar />
-		<div class="top animated fadeInDown">
-                <p id="title"> Search Your Destination</p>
-          </div>
+		
         <SearchBar />
       </div>
     )
