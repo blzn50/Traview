@@ -1,6 +1,8 @@
 package com.places.model;
 
 
+import com.review.model.Review;
+
 import java.util.List;
 
 /**
@@ -12,6 +14,15 @@ public class Place {
     private String address;
     private String type;
 
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
+    }
+
+    private List<Review> reviewList;
     public List<String> getPhotos() {
         return photos;
     }

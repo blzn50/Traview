@@ -4,6 +4,7 @@ var Detail = require('../components/Detail')
 var ReviewForm = require('../components/ReviewForm')
 var Review = require('../components/Review')
 var SearchBar = require('../components/SearchBar')
+import SearchBox from '../components/search-box'
 import {withRouter} from 'react-router'
 import {connect} from 'react-redux'
 
@@ -16,20 +17,17 @@ class SubDetailContainer extends React.Component{
       <div>
       <NavBar />
       <SearchBar />
-		<div id="main" className="detail_page">
+		<div id="main_result" className="detail_page">
 			   <Detail />
         <div className="container-fluid review">
-
-	        <div className="row review-row">
-
-	        		<ReviewForm />
-
-		        	<Review />
-              <Review />
-              <Review />
-              <Review />
-	        </div>
-	       </div>
+	    <div className="row review-row">
+                <ReviewForm />
+		<Review />
+                <Review />
+                <Review />
+                <Review />
+	    </div>
+	</div>
 	    </div>
     </div>
     )

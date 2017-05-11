@@ -15,11 +15,11 @@ public class Account {
     @Id
     private String username;
     private String password;
-    private String userid;
+    private long userid;
     private String role;
     private boolean enabled;
 
-    public Account(String username, String userid) {
+    public Account(String username, long userid) {
         this.username = username;
         this.userid = userid;
         this.enabled = true;
@@ -48,11 +48,11 @@ public class Account {
         this.password = password;
     }
 
-    public String getUserid() {
+    public long getUserid() {
         return userid;
     }
 
-    public void setUserid(String userid) {
+    public void setUserid(long userid) {
         this.userid = userid;
     }
 
