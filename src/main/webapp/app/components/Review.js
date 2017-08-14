@@ -1,6 +1,8 @@
 var React = require('react')
 
 function Review(props){
+
+  //display different number of stars based on rating
   const stars = []
   for (var i=0; i<props.review.rating; i++){
     stars.push((<span className="glyphicon glyphicon-star"></span>))

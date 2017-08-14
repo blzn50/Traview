@@ -5,6 +5,7 @@ import {SEARCH_REQUEST, SEARCH_SUCCESS,
     NEARBY_FAILED, NEARBY_SUCCESS}
 from '../actions/data';
 
+//reducer to change the "searchedLocation" part of the state based on action dispatched
 export function searchedLocation(state={
   isFetching: false,
   fetched: false,
@@ -38,6 +39,7 @@ export function searchedLocation(state={
     }
   }
 
+//reducer to change the "recommendLocation" part of the state based on action dispatched
 export function recommendLocation(state={
     isFetching: false,
     fetched: false,
@@ -71,6 +73,7 @@ export function recommendLocation(state={
       }
 }
 
+//reducer to change the "detailLocation" part of the state based on action dispatched
 export function detailLocation(state={
       isFetching: false,
       fetched: false,
@@ -105,6 +108,7 @@ export function detailLocation(state={
 }
 
 
+//reducer to change the "nearbyLocation" part of the state based on action dispatched
 export function nearbyLocation(state={
       isFetching: false,
       fetched: false,

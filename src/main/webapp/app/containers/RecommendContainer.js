@@ -8,6 +8,7 @@ class SubRecommendContainer extends React.Component{
   constructor(props){
     super(props)
   }
+  //fetching recommendation if the user is logged in and the component is mounted
   componentDidMount(){
     if (this.props.state.loginUser.fetched==true){
       this.props.recommendFetching();
@@ -42,13 +43,14 @@ class SubRecommendContainer extends React.Component{
   }
 }
 
-
+//mapping state to props
 const mapStateToProps = state => {
   return {
     state: state
   }
 }
 
+//mapping dispatcher to props
 const mapDispatchToProps = dispatch => {
   return {
     recommendFetching: (review) => {
@@ -57,6 +59,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+//connect to router
 const RecommendContainer = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubRecommendContainer))
 
 module.exports = RecommendContainer

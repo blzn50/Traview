@@ -6,6 +6,7 @@ import {submitReview} from './review'
 import {detailLocation} from './data'
 import {nearbyLocation} from './data'
 
+//combine the reducer from imported sub-reducers 
 const rootReducer = combineReducers({loginUser,registerUser,searchedLocation,
         recommendLocation, submitReview, detailLocation, nearbyLocation})
 

@@ -6,6 +6,7 @@ class SubResultItem extends React.Component{
     super(props)
     this.toDetail = this.toDetail.bind(this)
   }
+  //redirect to the route /detail with identified item sent along to child component
   toDetail(event){
     event.preventDefault()
     this.props.router.push({
@@ -16,6 +17,8 @@ class SubResultItem extends React.Component{
     })
   }
   render(){
+
+    //render different number of stars based on rating
     const stars = []
     for (var i=0; i<this.props.item.avgRating; i++){
       stars.push((<span className="glyphicon glyphicon-star"></span>))

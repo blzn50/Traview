@@ -6,6 +6,7 @@ import {submitReview} from '../actions/review'
 class SubReviewForm extends React.Component{
   constructor(props){
     super(props)
+    //binding function to local 'this'
     this.toggleForm = this.toggleForm.bind(this)
     this.submitReview = this.submitReview.bind(this)
     this.updateReview = this.updateReview.bind(this)
@@ -14,24 +15,28 @@ class SubReviewForm extends React.Component{
       formOn: false
     }
   }
+  //hide and display the form for review
   toggleForm(event){
     event.preventDefault()
     this.setState({
       formOn: !this.state.formOn
     })
   }
+  //update review data to the state of the component
   updateReview(event){
     event.preventDefault()
     this.setState({
       review: event.target.value
     })
   }
+  //update rating data to the state of the component
   updateRating(event){
     event.preventDefault()
     this.setState({
       rating: event.target.value
     })
   }
+  //submit new review with review's information in the component's state
   submitReview(event){
     event.preventDefault()
     if (this.props.state.loginUser.fetched==true){
@@ -43,10 +48,12 @@ class SubReviewForm extends React.Component{
         place_id: this.props.item.placeId
       })
     }
+    //warning for authentication
     else{
       alert('You need to login to submit reviews.')
     }
   }
+  //submission alert based on the state of the component
   componentWillReceiveProps(nextProps){
     if (nextProps.state.submitReview.fetched===true
         &&nextProps.state.submitReview.isFetching===false

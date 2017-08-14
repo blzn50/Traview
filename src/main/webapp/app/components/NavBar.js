@@ -12,27 +12,33 @@ import {logoutUser} from '../actions/authentication'
 class SubNavBar extends React.Component{
   constructor(props){
     super(props);
+    //binding the function to the local "this"
     this.handleLogout = this.handleLogout.bind(this);
     this.toLogin = this.toLogin.bind(this)
     this.toRegister = this.toRegister.bind(this)
     this.toFrontPage = this.toFrontPage.bind(this)
   }
+  //redirect to the route /login
   toLogin(event){
     event.preventDefault();
     this.props.router.push('/login');
   }
+  //redirect to the route /register
   toRegister(event){
     event.preventDefault();
     this.props.router.push('/register');
   }
+  //redirect to the front page
   toFrontPage(event){
     event.preventDefault();
     this.props.router.push('/');
   }
+  //log out
   handleLogout(event){
     event.preventDefault();
     this.props.handleLogout();
   }
+  //log out user using authentication part of the redux state
   componentWillReceiveProps(nextProps){
     if (nextProps.state.loginUser.fetched===false
       &&nextProps.state.loginUser.statusText==='Logged Out'){
@@ -81,6 +87,7 @@ const mapStateToProps = state => {
   }
 }
 
+//mapping action dispatching to props
 const mapDispatchToProps = dispatch => {
   return {
     handleLogout: () => {
@@ -89,6 +96,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+//connect to router
 const NavBar = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubNavBar))
 
 module.exports = NavBar

@@ -8,6 +8,7 @@ class SubNearbyContainer extends React.Component{
   constructor(props){
     super(props)
   }
+  //get the user's location to fetch nearby locations if the component is mounted
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(position=>{
       const loc = position.coords.latitude.toString() + ',' + position.coords.longitude.toString()
@@ -36,12 +37,14 @@ class SubNearbyContainer extends React.Component{
   }
 }
 
+//mapping state to props
 const mapStateToProps = state => {
   return {
     state: state
   }
 }
 
+//mapping dispatcher to props
 const mapDispatchToProps = dispatch => {
   return {
     nearbyFetching: (keyword,latlng) => {
@@ -50,6 +53,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+//connect to router
 const NearbyContainer = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubNearbyContainer))
 
 module.exports = NearbyContainer

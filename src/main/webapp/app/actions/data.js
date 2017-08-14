@@ -18,19 +18,21 @@ export const NEARBY_REQUEST = 'DETAIL_REQUEST'
 export const NEARBY_SUCCESS ='DETAIL_SUCCESS'
 export const NEARBY_FAILED = 'DETAIL_FAILED'
 
-
+//dispatch action for requesting a search
 export function searchRequest(){
   return {
     type: SEARCH_REQUEST
   }
 }
 
+//dispatch action for failing a search
 export function searchFailed(){
   return {
     type: SEARCH_FAILED
   }
 }
 
+//dispatch action for searching succeeded
 export function searchSuccess(data){
   return {
     type: SEARCH_SUCCESS,
@@ -38,18 +40,21 @@ export function searchSuccess(data){
   }
 }
 
+//dispatch action for requesting details of search's result
 export function detailRequest(){
   return {
     type: DETAIL_REQUEST
   }
 }
 
+//dispatch action for failling requesting details of search's result
 export function detailFailed(){
   return {
     type: DETAIL_FAILED
   }
 }
 
+//dispatch action for successfully requesting details of search's result
 export function detailSuccess(data){
   return {
     type: DETAIL_SUCCESS,
@@ -57,18 +62,21 @@ export function detailSuccess(data){
   }
 }
 
+//dispatch action for requesting recommendation based on the result
 export function recommendRequest(){
   return {
     type: RECOMMEND_REQUEST
   }
 }
 
+//dispatch action for failling requesting recommendation based on the result
 export function recommendFailed(){
   return {
     type: RECOMMEND_FAILED
   }
 }
 
+//dispatch action for successfully requesting recommendation based on the result
 export function recommendSuccess(data){
   return {
     type: RECOMMEND_SUCCESS,
@@ -76,18 +84,21 @@ export function recommendSuccess(data){
   }
 }
 
+//dispatch action for requesting nearby locations
 export function nearbyRequest(){
   return {
     type: NEARBY_REQUEST
   }
 }
 
+//dispatch action for failling requesting nearby locations
 export function nearbyFailed(){
   return {
     type: NEARBY_FAILED
   }
 }
 
+//dispatch action for successfully requesting nearby locations
 export function nearbySuccess(data){
   return {
     type: NEARBY_SUCCESS,
@@ -95,6 +106,7 @@ export function nearbySuccess(data){
   }
 }
 
+//thunk for the searching process
 export function searchFetching(query){
   return (dispatch) => {
     dispatch(searchRequest())
@@ -117,6 +129,7 @@ export function searchFetching(query){
   }
 }
 
+//thunk for the process of fetching recommendation
 export function recommendFetching(){
   return (dispatch) => {
     dispatch(recommendRequest())
@@ -138,6 +151,7 @@ export function recommendFetching(){
   }
 }
 
+//thunk for fetching result's details
 export function detailFetching(id){
   return (dispatch) => {
     dispatch(detailRequest())
@@ -160,7 +174,7 @@ export function detailFetching(id){
   }
 }
 
-
+//thunks for fetching nearby location
 export function nearbyFetching(keyword,latlng){
   return (dispatch) => {
     dispatch(nearbyRequest())

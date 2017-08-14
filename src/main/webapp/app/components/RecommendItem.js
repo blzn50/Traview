@@ -6,6 +6,7 @@ class SubRecommendItem extends React.Component{
     super(props)
     this.toDetail = this.toDetail.bind(this)
   }
+  //redirect to the route /detail with data sent along
   toDetail(event){
     event.preventDefault()
     this.props.router.push({

@@ -10,30 +10,35 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE'
 
 const API_URL = 'http://localhost:8080/'
 
+//action for requesting login
 export function loginRequest(){
   return {
     type: LOGIN_REQUEST
   }
 }
 
+//action for login succeeded
 export function loginSuccess(){
   return {
     type: LOGIN_SUCCESS
   }
 }
 
+//action for requesting registration
 export function register(){
   return {
     type: REGISTER
   }
 }
 
+//action for register succeeded
 export function registerSuccess(){
   return {
     type: REGISTER
   }
 }
 
+//action for failing registration
 export function registerFailure(error){
   return {
     type: REGISTER_FAILURE,
@@ -41,18 +46,21 @@ export function registerFailure(error){
   }
 }
 
+//action for failing logging in
 export function loginFailure(){
   return {
     type: LOGIN_FAILURE
   }
 }
 
+//action for logging out
 export function logout(){
   return {
     type: LOGOUT
   }
 }
 
+//thunk for process of registration
 export function registerUser(username, password){
   return (dispatch) => {
     dispatch(register());
@@ -74,8 +82,10 @@ export function registerUser(username, password){
   }
 }
 
+//thunk for process of logging in
 export function loginUser(username,password){
   return (dispatch) => {
+    //dispatch initial action and send request
     dispatch(loginRequest());
     fetch(`/login`,{
       method: 'POST',
@@ -84,16 +94,19 @@ export function loginUser(username,password){
     })
     .then(response => {
       console.log(response.status)
+      //dispatch action "success" if POST request succeeded
       if (response.status===200){
         console.log('success')
         dispatch(loginSuccess());
       }
+      //dispatch action "loginFailure" if POST request failed
       else{
         console.log('failed')
         dispatch(loginFailure());
       }
       console.log(response);
     })
+    //error handling, dispatch action "loginFailure"
     .catch(error => {
       console.log(error);
       dispatch(loginFailure(error))
@@ -101,8 +114,10 @@ export function loginUser(username,password){
   }
 }
 
+//thunk for process of logging out
 export function logoutUser(){
   return (dispatch) => {
+    //send request to log out and dispatch corresponding action
     fetch('/logout',{
       method: 'POST',
       credentials: 'same-origin'
@@ -116,6 +131,7 @@ export function logoutUser(){
   }
 }
 
+//utility function for creating forms for POST request
 function createForm(username,password){
   var form = new FormData();
   form.append('username',username);

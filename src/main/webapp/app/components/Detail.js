@@ -11,11 +11,13 @@ class SubDetail extends React.Component{
     }
   }
   componentDidMount(){
+    //get the latitude-longitude numbers of the searched location using googlemap api
     const address = this.props.location.state.item.address
     const encoded_address = address.replace(/ /g,"+")
     const uri = 'https://maps.googleapis.com/maps/api/geocode/json?address='+encoded_address
     fetch(uri)
       .then(response => response.json())
+      //set the component state with lat-long numbers to pass down to child components
       .then(function(json){
         this.setState({
           lat: json.results[0].geometry.location.lat,
@@ -25,6 +27,7 @@ class SubDetail extends React.Component{
   }
   render(){
 
+    //render different stars icon based on the rating of the search location in redux state
     const stars = []
     for (var i=0; i<this.props.location.state.item.avgRating; i++){
       stars.push((<span className="glyphicon glyphicon-star"></span>))
@@ -33,6 +36,7 @@ class SubDetail extends React.Component{
       stars.push((<span className="glyphicon glyphicon-star-empty"></span>))
     }
 
+    //display the images related to the searched result
     const images = []
     for (var n=1; n<this.props.location.state.item.photos.length; n++){
       images.push((

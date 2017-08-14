@@ -4,6 +4,8 @@ class Map extends React.Component{
   constructor(props){
     super(props)
   }
+  /*utility function to generate the map of the searched location
+  based on the passed down lat-long numbers using google map*/
   generateMap(lat,lng){
     const uluru = new google.maps.LatLng(lat,lng);
     const map = new google.maps.Map(document.getElementById('map'), {
@@ -15,9 +17,11 @@ class Map extends React.Component{
       map: map
     });
   }
+  //generate the map after the component is mounted
   componentDidMount(){
     this.generateMap(this.props.lat,this.props.lng)
   }
+  //generate the map after components props are changed
   componentWillReceiveProps(nextProps){
     this.generateMap(nextProps.lat,nextProps.lng)
   }

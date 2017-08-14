@@ -13,12 +13,14 @@ class SubSearchBar extends React.Component{
       query: ''
     }
   }
+  //update text field and component state corresponding
   onChange(event){
     event.preventDefault()
     this.setState({
       query: event.target.value.replace(/ /g,"+")
     })
   }
+  //redirect to the route /result with search query
   handleSearch(event){
     event.preventDefault()
     this.props.router.push('/result/' + this.state.query)

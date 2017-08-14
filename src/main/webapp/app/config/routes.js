@@ -14,8 +14,10 @@ var ResultContainer = require('../containers/ResultContainer');
 var DetailContainer = require('../containers/DetailContainer')
 import {hashHistory} from 'react-router'
 
+
 const store = configureStore();
 
+//set up the routing for the app and wrap it with redux store
 var Routes = (
   <Provider store={store} >
     <Router history={hashHistory}>

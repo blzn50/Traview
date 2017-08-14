@@ -2,6 +2,7 @@ import {REVIEW_REQUEST, REVIEW_SUCCESS,
         REVIEW_FAILED}
 from '../actions/review';
 
+//reducer to change the "submitReview" part of the state based on action dispatched
 export function submitReview(state={
   isFetching: false,
   fetched: false
