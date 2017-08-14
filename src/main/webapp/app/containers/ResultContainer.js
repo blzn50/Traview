@@ -16,16 +16,20 @@ import SearchBox from '../components/search-box'
 class SubResultContainer extends React.Component{
   constructor(props){
     super(props)
+    //binding function to the local 'this'
     this.locationOnMap = this.locationOnMap.bind(this)
+    //create state for the component
     this.state = {
       lat: null,
       lng: null
     }
   }
+  //get search query from the route's parameters and send them along with action dispatcher
   componentDidMount(){
     const query = this.props.routeParams.query
     this.props.searchFetching(query)
   }
+  //update component based on the status of the searching process
   componentWillReceiveProps(nextProps){
     console.log(nextProps)
     if (nextProps.state.searchedLocation.fetched === true
@@ -39,6 +43,8 @@ class SubResultContainer extends React.Component{
       nextProps.searchFetching(query)
     }
   }
+  /*utility function to take address and using it to search for
+  corresponding lat-long number using google map api */
   locationOnMap(address){
       const encoded_address = address.replace(/ /g,"+")
       const uri = 'https://maps.googleapis.com/maps/api/geocode/json?address='+encoded_address
@@ -91,12 +97,14 @@ class SubResultContainer extends React.Component{
   }
 }
 
+//mapping state to props
 const mapStateToProps = state => {
   return {
     state: state
   }
 }
 
+//mapping dispatcher to props
 const mapDispatchToProps = dispatch => {
   return {
     searchFetching: (query) => {
@@ -105,6 +113,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+//connect to router
 const ResultContainer = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubResultContainer))
 
 module.exports = ResultContainer

@@ -13,11 +13,13 @@ class SubDetailContainer extends React.Component{
   constructor(props){
     super(props)
   }
+  //fetching searched result's details if the component is mounted
   componentDidMount(){
     const placeId = this.props.location.state.item.placeId
     this.props.detailFetching(placeId)
   }
   render(){
+    //get and display reviews from redux state
     const reviews = this.props.state.detailLocation.places.reviewList
     return (
       <div>
@@ -53,12 +55,14 @@ class SubDetailContainer extends React.Component{
   }
 }
 
+//mapping redux state to the app state
 const mapStateToProps = state => {
   return {
     state: state
   }
 }
 
+//mapping dispatcher to props
 const mapDispatchToProps = dispatch => {
   return {
     detailFetching: (id) => {
@@ -67,6 +71,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+//connect to router
 const DetailContainer = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubDetailContainer))
 
 module.exports = DetailContainer

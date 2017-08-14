@@ -7,12 +7,14 @@ class SubMain extends React.Component{
   constructor(props){
     super(props)
   }
+  //auto login if the authentication session is still available
   componentDidMount(){
     if (localStorage.getItem('username')!==null){
         console.log('have cookie')
         this.props.autoLogin()
     }
   }
+  //log out user and clear the localStorage in the browser to end the session
   componentWillReceiveProps(nextProps){
     if (nextProps.state.loginUser.fetched===false){
       localStorage.clear()
@@ -27,12 +29,14 @@ class SubMain extends React.Component{
   }
 }
 
+//map state to props
 const mapStateToProps = state => {
   return {
     state: state
   }
 }
 
+//map dispatcher to props
 const mapDispatchToProps = dispatch => {
   return {
     autoLogin: () => {
@@ -41,6 +45,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+//connect to router
 const Main = withRouter(connect(mapStateToProps,mapDispatchToProps)(SubMain))
 
 module.exports = Main

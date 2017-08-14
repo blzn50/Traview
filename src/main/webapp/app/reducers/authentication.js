@@ -3,6 +3,7 @@ import {LOGIN_REQUEST, LOGIN_SUCCESS,
         REGISTER_SUCCESS, REGISTER_FAILURE, REGISTER}
 from '../actions/authentication';
 
+//reducer to change the authentication part of the state based on action dispatched
 export function loginUser(state={
   isFetching: false,
   fetched: false,
@@ -37,6 +38,7 @@ export function loginUser(state={
   }
 }
 
+//reducer to change the "registerUser" part of the state based on action dispatched
 export function registerUser(state={}, action){
   const user = {
     isFetching:false,
