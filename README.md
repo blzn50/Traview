@@ -1,5 +1,5 @@
 # Travel_Place_Recommender
-A travel rating and review website using (Java) Spring boot and React.
+A travel rating and review website using (Java) Spring boot, React and travis for CI/CD pipeline.
 
 URL:
   DEV: https://traviewdev.herokuapp.com
